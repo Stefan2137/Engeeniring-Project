@@ -23,7 +23,7 @@ struct ExerciseList: View {
                 .padding()
 
                 List(viewModel.sortedExercises) { exercise in
-                    NavigationLink(destination: ExerciseInfromationView(info: exercise.Exercise_Name)) {
+                    NavigationLink(destination: ExerciseInfromationView(info: exercise.Exercise_Name, DiffLvL: exercise.Difficulty_Level, Exercise_Classification: exercise.Exercise_Classification, Grip: exercise.Grip, Muscle_Group: exercise.Muscle_Group, Posture: exercise.Posture, Primary_Equipment: exercise.Primary_Equipment, Prime_Mover_Muscle: exercise.Prime_Mover_Muscle, Secondary_Equipment: exercise.Secondary_Equipment, Secondary_Muscle: exercise.Secondary_Muscle, Short_Youtube_Demonstration: exercise.Short_Youtube_Demonstration, Single_Or_Double_Arm: exercise.Single_Or_Double_Arm, Tertiary_Muscle: exercise.Tertiary_Muscle)) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(exercise.Exercise_Name)
