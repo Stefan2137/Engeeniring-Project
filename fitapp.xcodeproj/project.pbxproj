@@ -45,6 +45,9 @@
 		8CCE498A2ADC831A00F51897 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE49892ADC831A00F51897 /* ExerciseList.swift */; };
 		8CCE498F2ADC83FC00F51897 /* SetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE498E2ADC83FC00F51897 /* SetsView.swift */; };
 		8CCE49912ADC840D00F51897 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE49902ADC840D00F51897 /* MainView.swift */; };
+		8CEA99E02B4B384E00821AD1 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA99DF2B4B384E00821AD1 /* SwiftUIView.swift */; };
+		8CEA99E22B4B3EF500821AD1 /* ExerciseField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA99E12B4B3EF500821AD1 /* ExerciseField.swift */; };
+		8CEA99E42B4B44E300821AD1 /* ExerciseFieldRepsKG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA99E32B4B44E300821AD1 /* ExerciseFieldRepsKG.swift */; };
 		8CEE0AF52B45C3C00088EA9B /* SetsOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE0AF42B45C3C00088EA9B /* SetsOverview.swift */; };
 		8CEE0AF72B45C7A70088EA9B /* ExerciseInfromationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE0AF62B45C7A70088EA9B /* ExerciseInfromationView.swift */; };
 		8CFBCA972AE05DEF001AC6A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBCA962AE05DEF001AC6A2 /* SettingsView.swift */; };
@@ -108,6 +111,9 @@
 		8CCE49892ADC831A00F51897 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		8CCE498E2ADC83FC00F51897 /* SetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsView.swift; sourceTree = "<group>"; };
 		8CCE49902ADC840D00F51897 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8CEA99DF2B4B384E00821AD1 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		8CEA99E12B4B3EF500821AD1 /* ExerciseField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseField.swift; sourceTree = "<group>"; };
+		8CEA99E32B4B44E300821AD1 /* ExerciseFieldRepsKG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFieldRepsKG.swift; sourceTree = "<group>"; };
 		8CEE0AF42B45C3C00088EA9B /* SetsOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsOverview.swift; sourceTree = "<group>"; };
 		8CEE0AF62B45C7A70088EA9B /* ExerciseInfromationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfromationView.swift; sourceTree = "<group>"; };
 		8CFBCA962AE05DEF001AC6A2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -231,6 +237,9 @@
 				8C1A77542B33529A00C92494 /* NewSetView.swift */,
 				8CEE0AF42B45C3C00088EA9B /* SetsOverview.swift */,
 				8CEE0AF62B45C7A70088EA9B /* ExerciseInfromationView.swift */,
+				8CEA99DF2B4B384E00821AD1 /* SwiftUIView.swift */,
+				8CEA99E12B4B3EF500821AD1 /* ExerciseField.swift */,
+				8CEA99E32B4B44E300821AD1 /* ExerciseFieldRepsKG.swift */,
 			);
 			path = VIews;
 			sourceTree = "<group>";
@@ -412,6 +421,7 @@
 			files = (
 				8CA0012A2B07E0EF00DBB614 /* Extensions.swift in Sources */,
 				8CB276382B32463000601B16 /* SetCardViewViewModel.swift in Sources */,
+				8CEA99E02B4B384E00821AD1 /* SwiftUIView.swift in Sources */,
 				8C0D39C82AFFF43800156654 /* SetCard.swift in Sources */,
 				8CEE0AF52B45C3C00088EA9B /* SetsOverview.swift in Sources */,
 				8C52A9012ADF1EE1009271E0 /* SetsViewViewModel.swift in Sources */,
@@ -421,6 +431,7 @@
 				8C86E8682B0FBA66006B8582 /* SummaryView.swift in Sources */,
 				8C52A8FB2ADF1E21009271E0 /* TimerView.swift in Sources */,
 				8C1A77512B334EB500C92494 /* SetInformation.swift in Sources */,
+				8CEA99E22B4B3EF500821AD1 /* ExerciseField.swift in Sources */,
 				8C52A9052ADF1F20009271E0 /* MainViewViewModel.swift in Sources */,
 				8C52A9032ADF1F04009271E0 /* ExerciseListViewModel.swift in Sources */,
 				8CA0011F2B07CDE400DBB614 /* TLButton.swift in Sources */,
@@ -432,6 +443,7 @@
 				8C17DC672B44A80700770B05 /* SetModel.swift in Sources */,
 				8C1A77552B33529A00C92494 /* NewSetView.swift in Sources */,
 				8C52A8FF2ADF1ECF009271E0 /* TimerViewViewModel.swift in Sources */,
+				8CEA99E42B4B44E300821AD1 /* ExerciseFieldRepsKG.swift in Sources */,
 				8CFBCA9A2AE05E03001AC6A2 /* SettingViewModel.swift in Sources */,
 				8C7B5E092B0E691A005C6C7F /* Exercise.swift in Sources */,
 				8CC672EB2B13B863003C31E7 /* CButton.swift in Sources */,

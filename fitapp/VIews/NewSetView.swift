@@ -13,74 +13,26 @@ struct NewSetView: View {
     var body: some View {
         NavigationView{
             VStack{
-                
                 Form{
                     TextField("Workout Name",text: $viewModel.WorkoutName)
                     ForEach(0..<viewModel.numberOfExercises, id: \.self){index in
                         VStack{
-                            TextField("Execrise Name",text: $viewModel.title)
-                                .padding()
-                                .background(Color(.systemGray6))
-                                .cornerRadius(5)
-                                .disableAutocorrection(true)
-                            ForEach(0..<viewModel.numberOfSetsAdded, id: \.self) { index in
-                                VStack {
-                                    HStack{
-                                        VStack {
-                                            Text("Set")
-                                                .offset(x: -30)
-                                            TextField("Set", value: $viewModel.numberOfSetsAdded, formatter: NumberFormatter())
-                                                .disabled(true)
-                                                .font(.system(size:10))
-                                                .padding()
-                                                .contentShape(Rectangle())
-                                                .border(.black,width:1)
-                                        }
-                                        
-                                        VStack {
-                                            Text("Kg/lbs")
-                                                .offset(x: -28)
-                                            TextField("Kg/lbs", text: $viewModel.weightS)
-                                                .keyboardType(.decimalPad)
-                                                .padding()
-                                                .contentShape(Rectangle())
-                                                .border(.black,width:1)
-                                        }
-                                        
-                                        VStack {
-                                            Text("Reps")
-                                                .offset(x: -2)
-                                            Picker("",selection: $viewModel.numberofreps)
-                                            {
-                                                ForEach(0..<100)
-                                                {
-                                                    Text("\($0)")
-                                                }
-                                            }
-                                            .frame(width: 30,height: 30)
-                                            .font(.system(size: 10))
-                                            .padding()
-                                            .contentShape(Rectangle())
-                                            .border(.black,width:1)
-                                        }
-                                    }
-                                   
+                            ForEach(viewModel.title.keys.sorted(), id: \.self){exerciseIndex in
+                                VStack{
+                                    Text(viewModel.title[exerciseIndex] ?? "")
+                                        .foregroundColor(.green)
+                                    ExerciseField(index: exerciseIndex)
+                                        .environmentObject(viewModel)
                                 }
-                                .padding()
                             }
                         }
                     }
             
                     DatePicker("Date picker", selection: $viewModel.date)
-                   
-                    TLButton(title: "+Add Set", background: .gray, titlebackground: .black)
-                    {
-                        viewModel.addSet()
-                    }
-                    .padding()
                     TLButton(title: "Add Exercise", background: .gray, titlebackground: .black)
                     {
-                        viewModel.addExercise()
+                        let currentCount = viewModel.title.count
+                        viewModel.title[currentCount + 1] = ""
                     }
                     .padding()
                 }

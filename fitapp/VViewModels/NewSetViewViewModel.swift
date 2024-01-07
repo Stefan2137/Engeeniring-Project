@@ -10,18 +10,18 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class NewSetViewViewModel: ObservableObject {
-  //  @Published var sets:[SetInformation] = []
     @Published var WorkoutName = ""
-    @Published var title = ""
+    @Published var title = [0:""]
     @Published var numberofsets = 0
     @Published var setpause = Timer()
     @Published var date = Date()
     @Published var showAlert = false
-    @Published var numberofreps = 0
+    @Published var numberofreps = [0:0]
     @Published var numberOfSetsAdded = 1
     @Published var weight1 = 0.0
-    @Published var weightS = ""
+    @Published var weightS = [0:""]
     @Published var numberOfExercises = 1
+    @Published var titlename = ""
     
     
     init(){}
@@ -32,8 +32,6 @@ class NewSetViewViewModel: ObservableObject {
         guard canSave else{
             return
         }
-        weight1 = Double(weightS)!
-        
         guard let uId = Auth.auth().currentUser?.uid else{
             return
         }
@@ -44,7 +42,7 @@ class NewSetViewViewModel: ObservableObject {
                                     time: 0,
                                     isDone: false,
                                     numberreps: numberofreps,
-                                    weight:weight1,
+                                    weight:weightS,
                                     WName: WorkoutName
                                     )
         
@@ -58,7 +56,7 @@ class NewSetViewViewModel: ObservableObject {
     }
     
     var canSave: Bool{
-        guard !title.trimmingCharacters(in: .whitespaces).isEmpty else{
+        guard !titlename.trimmingCharacters(in: .whitespaces).isEmpty else{
             return false
         }
         guard !weightS.isEmpty  else{
