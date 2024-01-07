@@ -14,20 +14,29 @@ struct ExerciseField: View {
     
     var body: some View {
             VStack {
-                TextField("ExerciseName", text: $field)
-                ExerciseFieldRepsKG(index: 1)
+                    TextField("ExerciseName", text: $field)
+                    ForEach(viewModel.numberofsets.keys.sorted(), id: \.self){
+                        setIndex in ExerciseFieldRepsKG(index: setIndex)
+                    }
+                    TLButton(title: "+Add Set", background: .gray, titlebackground: .black)
+                    {
+                        print("Before: \(viewModel.numberofsets)")
+                        let currentCount = viewModel.numberofsets.count
+                        viewModel.numberofsets[currentCount + 1] = 0
+                        viewModel.weightS[currentCount + 1] = ""
+                        viewModel.numberofreps[currentCount + 1] = 0
+                        print("After: \(viewModel.numberofsets)")
+                        
+                    }
                 
-                TLButton(title: "+Add Set", background: .gray, titlebackground: .black)
-                {
-                    viewModel.addSet()
-                }
-                .frame(width: 350,height: 25)
+                
                 .padding()
             }
         }
         
         private func store() {
             viewModel.title[index] = field
+            
         }
     
     }

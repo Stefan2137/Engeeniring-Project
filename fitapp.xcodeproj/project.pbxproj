@@ -45,7 +45,6 @@
 		8CCE498A2ADC831A00F51897 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE49892ADC831A00F51897 /* ExerciseList.swift */; };
 		8CCE498F2ADC83FC00F51897 /* SetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE498E2ADC83FC00F51897 /* SetsView.swift */; };
 		8CCE49912ADC840D00F51897 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE49902ADC840D00F51897 /* MainView.swift */; };
-		8CEA99E02B4B384E00821AD1 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA99DF2B4B384E00821AD1 /* SwiftUIView.swift */; };
 		8CEA99E22B4B3EF500821AD1 /* ExerciseField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA99E12B4B3EF500821AD1 /* ExerciseField.swift */; };
 		8CEA99E42B4B44E300821AD1 /* ExerciseFieldRepsKG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA99E32B4B44E300821AD1 /* ExerciseFieldRepsKG.swift */; };
 		8CEE0AF52B45C3C00088EA9B /* SetsOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE0AF42B45C3C00088EA9B /* SetsOverview.swift */; };
@@ -111,7 +110,6 @@
 		8CCE49892ADC831A00F51897 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		8CCE498E2ADC83FC00F51897 /* SetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsView.swift; sourceTree = "<group>"; };
 		8CCE49902ADC840D00F51897 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		8CEA99DF2B4B384E00821AD1 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		8CEA99E12B4B3EF500821AD1 /* ExerciseField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseField.swift; sourceTree = "<group>"; };
 		8CEA99E32B4B44E300821AD1 /* ExerciseFieldRepsKG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFieldRepsKG.swift; sourceTree = "<group>"; };
 		8CEE0AF42B45C3C00088EA9B /* SetsOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsOverview.swift; sourceTree = "<group>"; };
@@ -234,10 +232,9 @@
 				8CA0011E2B07CDE400DBB614 /* TLButton.swift */,
 				8C86E8672B0FBA66006B8582 /* SummaryView.swift */,
 				8CC672EA2B13B863003C31E7 /* CButton.swift */,
-				8C1A77542B33529A00C92494 /* NewSetView.swift */,
 				8CEE0AF42B45C3C00088EA9B /* SetsOverview.swift */,
 				8CEE0AF62B45C7A70088EA9B /* ExerciseInfromationView.swift */,
-				8CEA99DF2B4B384E00821AD1 /* SwiftUIView.swift */,
+				8C1A77542B33529A00C92494 /* NewSetView.swift */,
 				8CEA99E12B4B3EF500821AD1 /* ExerciseField.swift */,
 				8CEA99E32B4B44E300821AD1 /* ExerciseFieldRepsKG.swift */,
 			);
@@ -421,7 +418,6 @@
 			files = (
 				8CA0012A2B07E0EF00DBB614 /* Extensions.swift in Sources */,
 				8CB276382B32463000601B16 /* SetCardViewViewModel.swift in Sources */,
-				8CEA99E02B4B384E00821AD1 /* SwiftUIView.swift in Sources */,
 				8C0D39C82AFFF43800156654 /* SetCard.swift in Sources */,
 				8CEE0AF52B45C3C00088EA9B /* SetsOverview.swift in Sources */,
 				8C52A9012ADF1EE1009271E0 /* SetsViewViewModel.swift in Sources */,

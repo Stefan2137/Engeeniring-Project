@@ -12,12 +12,14 @@ struct ExerciseFieldRepsKG: View {
     let index: Int
     @State private var weight = ""
     @State private var reps = 0
+    @State private var sets = 1
     
     var body: some View {
+        
             HStack {
                 VStack{
                     Text("Set")
-                    TextField("Set",value: $viewModel.numberOfSetsAdded,formatter: NumberFormatter())
+                    TextField("Set",value: $sets,formatter: NumberFormatter())
                         .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 }
                 VStack {
@@ -29,9 +31,9 @@ struct ExerciseFieldRepsKG: View {
                         .border(.black,width:1)
                             }
                 VStack {
-                               Text("Reps")
+                            Text("Reps")
                                    .offset(x: -2)
-                               Picker("",selection: $reps   )
+                            Picker("",selection: $reps   )
                                {
                                    ForEach(0..<100)
                                    {
