@@ -18,27 +18,27 @@ struct ExerciseField: View {
                     ForEach(viewModel.numberofsets.keys.sorted(), id: \.self){
                         setIndex in ExerciseFieldRepsKG(index: setIndex)
                     }
-                    TLButton(title: "+Add Set", background: .gray, titlebackground: .black)
-                    {
-                        print("Before: \(viewModel.numberofsets)")
-                        let currentCount = viewModel.numberofsets.count
-                        viewModel.numberofsets[currentCount + 1] = 0
-                        viewModel.weightS[currentCount + 1] = ""
-                        viewModel.numberofreps[currentCount + 1] = 0
-                        print("After: \(viewModel.numberofsets)")
-                        
-                    }
-                
-                
+                TLButton(title: "+Add Set", background: .gray, titlebackground: .black)
+                {
+                    let currentCount = viewModel.numberofsets.count
+                    viewModel.numberofsets[currentCount + 1] = 0
+                    viewModel.weightS[currentCount + 1] = ""
+                    viewModel.numberofreps[currentCount + 1] = 0
+                }
+                .frame(width: 350 ,height: 20)
                 .padding()
             }
+            .scaledToFit()
         }
         
         private func store() {
             viewModel.title[index] = field
             
         }
-    
+    private func addSetButtonTapped(){
+        
+    }
+
     }
 
 struct ExerciseFieldPreview : PreviewProvider {

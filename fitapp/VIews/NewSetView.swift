@@ -22,6 +22,7 @@ struct NewSetView: View {
                                     Text(viewModel.title[exerciseIndex] ?? "")
                                         .foregroundColor(.green)
                                     ExerciseField(index: exerciseIndex)
+                                        .buttonStyle(.plain)
                                         .environmentObject(viewModel)
                                 }
                             }
@@ -29,11 +30,12 @@ struct NewSetView: View {
                     }
             
                     DatePicker("Date picker", selection: $viewModel.date)
-                    TLButton(title: "Add Exercise", background: .gray, titlebackground: .black)
+                                        TLButton(title: "Add Exercise", background: .gray, titlebackground: .black)
                     {
                         let currentCount = viewModel.title.count
                         viewModel.title[currentCount + 1] = ""
                     }
+                    
                     .padding()
                 }
                 .formStyle(GroupedFormStyle())

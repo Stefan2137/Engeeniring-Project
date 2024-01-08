@@ -21,7 +21,9 @@ struct ExerciseFieldRepsKG: View {
                     Text("Set")
                     TextField("Set",value: $sets,formatter: NumberFormatter())
                         .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                      
                 }
+                .scaledToFit()
                 VStack {
                         Text("Kg/lbs")
                         TextField("Kg/lbs", text: $weight)
@@ -30,6 +32,7 @@ struct ExerciseFieldRepsKG: View {
                         .contentShape(Rectangle())
                         .border(.black,width:1)
                             }
+                .scaledToFit()
                 VStack {
                             Text("Reps")
                                    .offset(x: -2)
@@ -45,6 +48,7 @@ struct ExerciseFieldRepsKG: View {
                                .contentShape(Rectangle())
                                .border(.black,width:1)
                            }
+                .scaledToFit()
                 
             }
         }

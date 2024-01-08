@@ -55,9 +55,9 @@ class NewSetViewViewModel: ObservableObject {
     }
     
     var canSave: Bool{
-        guard !titlename.trimmingCharacters(in: .whitespaces).isEmpty else{
-            return false
-        }
+       // guard !titlename.trimmingCharacters(in: .whitespaces).isEmpty else{
+         //   return false
+       // }
         guard !weightS.isEmpty  else{
             return false
         }

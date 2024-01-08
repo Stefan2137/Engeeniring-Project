@@ -10,7 +10,14 @@ import SwiftUI
 struct SetsOverview: View {
     let item: String
     var body: some View {
-        Text(item)
+        NavigationView{
+            VStack{
+                
+                Text(item)
+                
+            }
+            .navigationTitle(item)
+        }
     }
 }
 
