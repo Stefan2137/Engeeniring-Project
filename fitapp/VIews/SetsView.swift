@@ -22,7 +22,7 @@ struct SetsView: View {
         NavigationView{
             VStack{
                 List(items) { item in
-                    NavigationLink(destination: SetsOverview(item: item.WName)) {
+                    NavigationLink(destination: SetsOverview(item: item.WName ,exName: item.ExeName)) {
                                         SetCard(title: item.WName, isDone: false)
                                     }
                                 }

@@ -9,7 +9,7 @@ import Foundation
 
 struct SetInformation: Codable, Identifiable{
     let id: String
-    let ExeName: [Int:String]
+    let ExeName: [String]
     let setnumbers: [Int:Int]
     let time: TimeInterval
     var isDone: Bool

@@ -11,40 +11,37 @@ struct ExerciseField: View {
     @EnvironmentObject var viewModel: NewSetViewViewModel
     let index: Int
     @State private var field = ""
+    @State private var numberofset = 1
+    @State private var ilosc = [""]
     
     var body: some View {
-            VStack {
-                    TextField("ExerciseName", text: $field)
-                    ForEach(viewModel.numberofsets.keys.sorted(), id: \.self){
-                        setIndex in ExerciseFieldRepsKG(index: setIndex)
-                    }
-                TLButton(title: "+Add Set", background: .gray, titlebackground: .black)
-                {
-                    let currentCount = viewModel.numberofsets.count
-                    viewModel.numberofsets[currentCount + 1] = 0
-                    viewModel.weightS[currentCount + 1] = ""
-                    viewModel.numberofreps[currentCount + 1] = 0
-                }
-                .frame(width: 350 ,height: 20)
-                .padding()
+        VStack {
+            TextField("ExerciseName", text: $field)
+            .onChange(of: field)
+            {
+                viewModel.title[index] = field
             }
+            ForEach(0..<ilosc.count, id: \.self){
+                setIndex in ExerciseFieldRepsKG(index: setIndex)
+            }
+            TLButton(title: "+Add Set", background: .gray, titlebackground: .black)
+            {
+                ilosc.append("")
+                viewModel.numberofsets[index] = numberofset
+                numberofset = numberofset + 1
+                
+            }
+            
+            .frame(width: 350 ,height: 20)
+            .padding()
             .scaledToFit()
         }
-        
-        private func store() {
-            viewModel.title[index] = field
-            
+    }
+}
+    struct ExerciseFieldPreview : PreviewProvider {
+        static var previews: some View{
+            ExerciseField(index: 1)
+                .environmentObject(NewSetViewViewModel())
         }
-    private func addSetButtonTapped(){
-        
-    }
-
-    }
-
-struct ExerciseFieldPreview : PreviewProvider {
-    static var previews: some View{
-        ExerciseField(index: 1)
-            .environmentObject(NewSetViewViewModel())
-    }
 }
 

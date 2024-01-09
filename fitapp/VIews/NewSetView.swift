@@ -19,8 +19,6 @@ struct NewSetView: View {
                         VStack{
                             ForEach(viewModel.title.keys.sorted(), id: \.self){exerciseIndex in
                                 VStack{
-                                    Text(viewModel.title[exerciseIndex] ?? "")
-                                        .foregroundColor(.green)
                                     ExerciseField(index: exerciseIndex)
                                         .buttonStyle(.plain)
                                         .environmentObject(viewModel)
