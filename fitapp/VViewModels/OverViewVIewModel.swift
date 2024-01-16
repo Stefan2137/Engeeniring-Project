@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class OverViewVIewModel: ObservableObject
+{
+    func forTrailingZero(_ temp: Double) -> String {
+        var tempVar = String(format: "%g", temp)
+        return tempVar
+    }
+}

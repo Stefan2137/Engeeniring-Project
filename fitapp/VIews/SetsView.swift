@@ -24,7 +24,7 @@ struct SetsView: View {
         NavigationView{
             VStack{
                 List(items) { item in
-                    NavigationLink(destination: SetsOverview(item: item.WName ,exName: item.ExeName,setNumber: item.setnumbers,time1: item.time)) {
+                    NavigationLink(destination: SetsOverview(item: item.WName, exName: item.ExeName, setNumber: item.setnumbers, time1: item.time, repsarr: item.numberreps, weightarr: item.weight)) {
                                         SetCard(title: item.WName, isDone: false)
                                     }
                                 }

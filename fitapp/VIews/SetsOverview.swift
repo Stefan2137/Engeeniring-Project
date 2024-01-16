@@ -12,15 +12,17 @@ struct SetsOverview: View {
     let exName: [Int:String]
     let setNumber: [Int:Int]
     let time1: TimeInterval
-    let reps:[Int:[Int]]
+    let repsarr: [Int:[Int]]
+    let weightarr: [Int:[Double]]
+    
     var body: some View {
         NavigationView{
             VStack{
                 
                 ForEach(exName.keys.sorted(), id: \.self) { index in
                     
-                    if let setn = setNumber[index], let ename = exName[index]{
-                        OverviewView(weigth: "20", reps: 10, set: setn , background: .gray, Name: ename)
+                    if let setn = setNumber[index], let ename = exName[index],let re=repsarr[index],let wei = weightarr[index] {
+                        OverviewView(weigth: wei, reps: re, set: setn , background: .gray, Name: ename)
                     }
                     else
                     {
@@ -36,6 +38,6 @@ struct SetsOverview: View {
     
 struct SetsOverview_Previews: PreviewProvider {
     static var previews: some View {
-        SetsOverview(item: "Elo", exName: [1:"12"], setNumber: [0:0], time1: 23, reps: [0 : [0]])
+        SetsOverview(item: "Elo", exName: [1:"12"], setNumber: [0:0], time1: 23, repsarr: [0 : [0]], weightarr: [0 : [2.1]])
     }
 }

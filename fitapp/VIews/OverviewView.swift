@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct OverviewView: View {
-    
-    let weigth: String
-    let reps: Int
+    @StateObject var viewModel = OverViewVIewModel()
+    let weigth: [Double]
+    let reps: [Int]
     let set: Int
     let background: Color
     let Name: String
@@ -31,7 +31,7 @@ struct OverviewView: View {
                         VStack {
                             Text("Kg/lbs")
                                 .offset(y:6)
-                            Text("\(weigth)")
+                            Text("\(viewModel.forTrailingZero(weigth[setIndex]))")
                                 .keyboardType(.decimalPad)
                                 .padding()
                                 .contentShape(Rectangle())
@@ -43,7 +43,7 @@ struct OverviewView: View {
                         VStack {
                             Text("Reps")
                                 .offset(x: -2,y: 13)
-                            Text("\(reps)")
+                            Text("\(reps[setIndex])")
                                 .frame(width: 70,height: 10)
                                 .padding()
                                 .contentShape(Rectangle())
@@ -60,7 +60,7 @@ struct OverviewView: View {
 
 struct OverviewView_Previews: PreviewProvider {
     static var previews: some View {
-        OverviewView(weigth: "1", reps: 20, set: 2, background: .gray, Name: "Cw")
+        OverviewView(weigth: [0.0], reps: [20,20], set: 2, background: .gray, Name: "Cw")
     }
 }
 
