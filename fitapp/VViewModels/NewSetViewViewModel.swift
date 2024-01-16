@@ -12,13 +12,12 @@ import FirebaseFirestore
 class NewSetViewViewModel: ObservableObject {
     @Published var WorkoutName = ""
     @Published var title = [0:""]
-    @Published var numberofsets = [0:1]
+    @Published var numberofsets = [0:0]
     @Published var setpause = Timer()
     @Published var date = Date()
     @Published var showAlert = false
-    @Published var numberofreps = [0:0]
-    @Published var weight1 = 0.0
-    @Published var weightS = [0:""]
+    @Published var numberofreps = [0:[0]]
+    @Published var weightS = [0:[0.0]]
     @Published var numberOfExercises = 1
     @Published var titlename = ""
     
@@ -35,13 +34,12 @@ class NewSetViewViewModel: ObservableObject {
             return
         }
         
-        let exeNames = Array(title.values)
         
         let newId = UUID().uuidString
         let newSet = SetInformation(id: newId,
-                                    ExeName: exeNames,
+                                    ExeName: title,
                                     setnumbers: numberofsets,
-                                    time: 0,
+                                    time: date.timeIntervalSince1970,
                                     isDone: false,
                                     numberreps: numberofreps,
                                     weight:weightS,
@@ -62,6 +60,9 @@ class NewSetViewViewModel: ObservableObject {
          //   return false
        // }
         guard !weightS.isEmpty  else{
+            return false
+        }
+        guard date >= Date().addingTimeInterval(-86400)else {
             return false
         }
         return true

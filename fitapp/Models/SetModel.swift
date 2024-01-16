@@ -7,11 +7,8 @@
 
 import Foundation
 
-struct SetModel: Identifiable {
-       
-        var id = UUID()
-        var setNumber: Int
-        var weight: Double
-        var reps: Int
-        var ExName: String
+struct SetModel:Codable, Identifiable {
+    let id: String
+    let WName: String
+    let Set:[SetInformation]
    }

@@ -1,5 +1,5 @@
 //
-//  ExerciseFieldRepsKG.swift
+//  ExerciseField.swift
 //  fitapp
 //
 //  Created by Kuba Stefański on 07/01/2024.
@@ -7,13 +7,11 @@
 
 import SwiftUI
 
-struct ExerciseFieldRepsKG: View {
+struct ExerciseFieldWithoutButton: View {
     @EnvironmentObject var viewModel: NewSetViewViewModel
     let index: Int
-    let setnumber: Int
-    @Binding var w:[Double]
-    @Binding var r:[Int]
-
+    let weight: String
+    let reps: Int
     
     
     var body: some View {
@@ -24,11 +22,10 @@ struct ExerciseFieldRepsKG: View {
                     Text("\(index + 1)")
                       
                 }
-                .scaledToFit()
                 VStack {
                         Text("Kg/lbs")
                         .offset(y:6)
-                    TextField("Kg/lbs",value:$w[index] ,format: .number)
+                        Text(weight)
                         .keyboardType(.decimalPad)
                         .padding()
                         .contentShape(Rectangle())
@@ -36,30 +33,23 @@ struct ExerciseFieldRepsKG: View {
                         .border(.black,width:1)
                         
                             }
-                .scaledToFit()
                 VStack {
                             Text("Reps")
+                            Text("\(reps)")
                         .offset(x: -2,y: 13)
-                            Picker("",selection: $r[index])
-                               {
-                                   ForEach(0..<100)
-                                   {
-                                       Text("\($0)")
-                                   }
-                               }
                                .frame(width: 70,height: 10)
                                .padding()
                                .contentShape(Rectangle())
                                .border(.black,width:1)
                            }
-                .scaledToFit()
             }
         }
 }
-
-struct ExerciseFieldRepsKGPreview : PreviewProvider {
-    static var previews: some View{
-        ExerciseFieldRepsKG(index: 0, setnumber: 1, w: Binding.constant([0.0]), r: Binding.constant([0]))
-            .environmentObject(NewSetViewViewModel())
-    }
+    struct ExerciseFieldWithoutButtonPreview : PreviewProvider {
+        static var previews: some View{
+            ExerciseFieldWithoutButton(index: 1, weight: "aa", reps: 1)
+                .environmentObject(NewSetViewViewModel())
+        }
 }
+
+

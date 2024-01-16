@@ -11,6 +11,8 @@ import FirebaseFirestoreSwift
 struct SetsView: View {
     @StateObject var viewModel = SetsViewViewModel()
     @FirestoreQuery var items: [SetInformation]
+    @State private var isDatePickerPresented = false
+    
     
     init(userId: String){
         
@@ -22,7 +24,7 @@ struct SetsView: View {
         NavigationView{
             VStack{
                 List(items) { item in
-                    NavigationLink(destination: SetsOverview(item: item.WName ,exName: item.ExeName)) {
+                    NavigationLink(destination: SetsOverview(item: item.WName ,exName: item.ExeName,setNumber: item.setnumbers,time1: item.time)) {
                                         SetCard(title: item.WName, isDone: false)
                                     }
                                 }
@@ -31,11 +33,16 @@ struct SetsView: View {
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
                     HStack{
-                        Button {
-                            viewModel.showingNewSetItemView = true
-                        } label: {
-                            Image(systemName: "calendar")
-                        }
+                        Image(systemName: "calendar")
+                            .foregroundColor(.blue)
+                          /*  .overlay{
+                                DatePicker("",selection: $viewModel.EDate
+                                           ,displayedComponents:.date)
+                                .frame(width: 23,height: 20)
+                                .clipped()
+                                .blendMode(.destinationOver)
+                            }
+                            */
                         .offset(x:-4,y: -5)
                         
                         Button{
