@@ -20,6 +20,7 @@ struct OverviewView: View {
                 .foregroundColor(background)
             VStack{
                 Text(Name)
+                .offset(x: -130, y: -30)
                 ForEach(0..<set, id: \.self){ setIndex in
                     HStack {
                         VStack{
@@ -43,24 +44,25 @@ struct OverviewView: View {
                         VStack {
                             Text("Reps")
                                 .offset(x: -2,y: 13)
-                            Text("\(reps[setIndex])")
+                            Text("\(reps[setIndex]) ")
                                 .frame(width: 70,height: 10)
                                 .padding()
                                 .contentShape(Rectangle())
                                 .border(.black,width:1)
                         }
-                        .scaledToFit()
+                        
                     }
                 }
             }
         }
+        .scaledToFit() 
     }
 }
 
 
 struct OverviewView_Previews: PreviewProvider {
     static var previews: some View {
-        OverviewView(weigth: [0.0], reps: [20,20], set: 2, background: .gray, Name: "Cw")
+        OverviewView(weigth: [0.0,1.1], reps: [20,20], set: 2, background: .gray, Name: "Cw")
     }
 }
 

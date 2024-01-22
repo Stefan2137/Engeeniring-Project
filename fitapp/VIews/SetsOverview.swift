@@ -17,19 +17,24 @@ struct SetsOverview: View {
     
     var body: some View {
         NavigationView{
-            VStack{
-                
-                ForEach(exName.keys.sorted(), id: \.self) { index in
+            List{
+                VStack{
+                    ForEach(exName.keys.sorted(), id: \.self) { index in
+                        
+                        if let setn = setNumber[index], let ename = exName[index],let re=repsarr[index],let wei = weightarr[index] {
+                            OverviewView(weigth: wei, reps: re, set: setn , background: .gray, Name: ename)
+                        }
+                        else
+                        {
+                            Text("no Value Found for key \(index)")
+                        }
+                    }
+                    .listStyle(DefaultListStyle())
                     
-                    if let setn = setNumber[index], let ename = exName[index],let re=repsarr[index],let wei = weightarr[index] {
-                        OverviewView(weigth: wei, reps: re, set: setn , background: .gray, Name: ename)
-                    }
-                    else
-                    {
-                        Text("no Value Found for key \(index)")
-                    }
                 }
-                .navigationTitle(item)
+                .navigationBarTitle(item)
+                .navigationBarHidden(true)
+               
             }
         }
     }
