@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExerciseField: View {
     @EnvironmentObject var viewModel: NewSetViewViewModel
+    @ObservedObject private var viewModelE = ExerciseFieldViewModel()
     let index: Int
     @State private var field = ""
     @State private var numberofset = 1
@@ -17,15 +18,20 @@ struct ExerciseField: View {
     
     var body: some View {
         VStack {
-            TextField("ExerciseName", text: $field)
-                .offset(x:30)
-            .onChange(of: field)
-            {
-                viewModel.title[index] = field
+            
+           Picker("", selection: $field) {
+                ForEach(viewModelE.exercises, id: \.self) { exercise in
+                    Text(exercise.Exercise_Name).tag(exercise.Exercise_Name)
+                    
+                }
             }
-            ForEach(0..<numberofset, id: \.self){
+            
+            .offset(x:-30)
+            
+           ForEach(0..<numberofset, id: \.self){
                 setIndex in ExerciseFieldRepsKG(index: setIndex, setnumber: numberofset, w: $weight, r: $reps)
             }
+           
             TLButton(title: "+Add Set", background: .gray, titlebackground: .black)
             {
                 self.weight.append(0.0)
@@ -37,6 +43,11 @@ struct ExerciseField: View {
             .frame(width: 350 ,height: 20)
             .padding()
             .scaledToFit()
+        }
+        .onChange(of: field)
+        {
+            print("Selected Exercise: \(field)")
+            viewModel.title[index] = field
         }
         .onChange(of: weight)
         {

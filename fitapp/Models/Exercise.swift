@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Exercise: Identifiable , Codable{
+struct Exercise: Identifiable , Codable, Hashable{
     var id: String = UUID().uuidString
-    var Difficulty_Level: String
     var Exercise_Name: String
+    var Difficulty_Level: String
     var Exercise_Classification: String
     var Grip: String
     var Muscle_Group: String

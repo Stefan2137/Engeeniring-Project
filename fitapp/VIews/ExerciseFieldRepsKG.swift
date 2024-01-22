@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExerciseFieldRepsKG: View {
     @EnvironmentObject var viewModel: NewSetViewViewModel
+    
     let index: Int
     let setnumber: Int
     @Binding var w:[Double]

@@ -13,6 +13,8 @@
 		8C1A77552B33529A00C92494 /* NewSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1A77542B33529A00C92494 /* NewSetView.swift */; };
 		8C1A77592B3353E800C92494 /* NewSetViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1A77582B3353E800C92494 /* NewSetViewViewModel.swift */; };
 		8C3008FF2B4E157800512308 /* ExerciseViewWithoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3008FE2B4E157800512308 /* ExerciseViewWithoutButton.swift */; };
+		8C4966F62B5EEA1A00B18AC9 /* ExerciseFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4966F52B5EEA1A00B18AC9 /* ExerciseFieldViewModel.swift */; };
+		8C4966F82B5EEADD00B18AC9 /* ExeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4966F72B5EEADD00B18AC9 /* ExeModel.swift */; };
 		8C4CBDC72ABEFB03008C92D0 /* fitappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4CBDC62ABEFB03008C92D0 /* fitappApp.swift */; };
 		8C4CBDCB2ABEFB04008C92D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4CBDCA2ABEFB04008C92D0 /* Assets.xcassets */; };
 		8C4CBDCE2ABEFB04008C92D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4CBDCD2ABEFB04008C92D0 /* Preview Assets.xcassets */; };
@@ -80,6 +82,8 @@
 		8C1A77542B33529A00C92494 /* NewSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSetView.swift; sourceTree = "<group>"; };
 		8C1A77582B3353E800C92494 /* NewSetViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSetViewViewModel.swift; sourceTree = "<group>"; };
 		8C3008FE2B4E157800512308 /* ExerciseViewWithoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewWithoutButton.swift; sourceTree = "<group>"; };
+		8C4966F52B5EEA1A00B18AC9 /* ExerciseFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFieldViewModel.swift; sourceTree = "<group>"; };
+		8C4966F72B5EEADD00B18AC9 /* ExeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExeModel.swift; sourceTree = "<group>"; };
 		8C4CBDC32ABEFB03008C92D0 /* fitapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C4CBDC62ABEFB03008C92D0 /* fitappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fitappApp.swift; sourceTree = "<group>"; };
 		8C4CBDCA2ABEFB04008C92D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 				8C7B5E082B0E691A005C6C7F /* Exercise.swift */,
 				8C1A77502B334EB500C92494 /* SetInformation.swift */,
 				8C17DC662B44A80700770B05 /* SetModel.swift */,
+				8C4966F72B5EEADD00B18AC9 /* ExeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				8C1A77582B3353E800C92494 /* NewSetViewViewModel.swift */,
 				8C52A9022ADF1F04009271E0 /* ExerciseListViewModel.swift */,
 				8CBD79082B572D73004DDFD9 /* OverViewVIewModel.swift */,
+				8C4966F52B5EEA1A00B18AC9 /* ExerciseFieldViewModel.swift */,
 			);
 			path = VViewModels;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 				8CCE49882ADC82F300F51897 /* BmiCalculator.swift in Sources */,
 				8CCADAEB2B06D5730019267B /* RegisterView.swift in Sources */,
 				8C1A77592B3353E800C92494 /* NewSetViewViewModel.swift in Sources */,
+				8C4966F82B5EEADD00B18AC9 /* ExeModel.swift in Sources */,
 				8CCE49912ADC840D00F51897 /* MainView.swift in Sources */,
 				8CFBCA972AE05DEF001AC6A2 /* SettingsView.swift in Sources */,
 				8C17DC672B44A80700770B05 /* SetModel.swift in Sources */,
@@ -463,6 +470,7 @@
 				8CCADAE92B06D1F30019267B /* HeaderView.swift in Sources */,
 				8CA001272B07DF1900DBB614 /* user.swift in Sources */,
 				8CA001252B07DBAA00DBB614 /* RegisterViewViewModel.swift in Sources */,
+				8C4966F62B5EEA1A00B18AC9 /* ExerciseFieldViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,12 +10,13 @@ import FirebaseFirestoreSwift
 class ExerciseListViewViewModel: ObservableObject{
     @Published var exercises = [Exercise]()
     private var db = Firestore.firestore()
+    private var dbe = Firestore.firestore()
     @Published var sortOption: SortOption = .name
+    
     
     enum SortOption{
         case name,diff,grip,muscle
     }
-    
     func fetchData() {
         db.collection("cwiczenia").addSnapshotListener { (querySnapshot, error )in
             
@@ -43,7 +44,7 @@ class ExerciseListViewViewModel: ObservableObject{
                 let Single_Or_Double_Arm = data["Single_Or_Double_Arm"] as? String ?? ""
                 let Tertiary_Muscle = data["Tertiary_Muscle"] as? String ?? ""
                 
-                return Exercise(Difficulty_Level: Difficulty_Level, Exercise_Name: Exercise_Name, Exercise_Classification: Exercise_Classification, Grip: Grip, Muscle_Group: Muscle_Group, Posture: Posture, Primary_Equipment: Primary_Equipment, Prime_Mover_Muscle: Prime_Mover_Muscle, Secondary_Equipment: Secondary_Equipment, Secondary_Muscle: Secondary_Muscle, Short_Youtube_Demonstration: Short_Youtube_Demonstration, Single_Or_Double_Arm: Single_Or_Double_Arm, Tertiary_Muscle: Tertiary_Muscle)
+                return Exercise(Exercise_Name: Exercise_Name,Difficulty_Level: Difficulty_Level,  Exercise_Classification: Exercise_Classification, Grip: Grip, Muscle_Group: Muscle_Group, Posture: Posture, Primary_Equipment: Primary_Equipment, Prime_Mover_Muscle: Prime_Mover_Muscle, Secondary_Equipment: Secondary_Equipment, Secondary_Muscle: Secondary_Muscle, Short_Youtube_Demonstration: Short_Youtube_Demonstration, Single_Or_Double_Arm: Single_Or_Double_Arm, Tertiary_Muscle: Tertiary_Muscle)
                 
                 
             }
