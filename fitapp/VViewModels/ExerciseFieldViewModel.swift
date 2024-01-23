@@ -5,8 +5,6 @@
 //  Created by Kuba Stefański on 22/01/2024.
 //
 
-import Foundation
-
 import FirebaseFirestore
 import Foundation
 import FirebaseFirestoreSwift
@@ -18,6 +16,7 @@ class ExerciseFieldViewModel: ObservableObject{
     {
         fetchExe()
     }
+    
     
     func fetchExe()
     {
