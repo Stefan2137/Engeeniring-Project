@@ -47,7 +47,8 @@ struct ExerciseField: View {
                 .padding()
                 .scaledToFit()
             }
-            
+           
+
             .onChange(of: field)
             {
                 viewModel.title[index] = field
@@ -55,26 +56,25 @@ struct ExerciseField: View {
             .onChange(of: weight)
             {
                 viewModel.weightS[index] = weight
-                
             }
             .onChange(of: reps)
             {
                 viewModel.numberofreps[index] = reps
             }
             .onAppear {
-                show = true // Show when entering the visible area
+                show = true 
             }
             .onDisappear {
-                show = false // Do not show when leaving the visible area
+                show = false
             }
+            
         }
     }
-        
-        struct ExerciseFieldPreview : PreviewProvider {
+}
+struct ExerciseFieldPreview : PreviewProvider {
             static var previews: some View{
                 ExerciseField(index: 1)
                     .environmentObject(NewSetViewViewModel())
             }
         }
-    }
 

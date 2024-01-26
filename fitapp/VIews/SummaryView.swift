@@ -6,10 +6,28 @@
 //
 
 import SwiftUI
+import Charts
+
+
 
 struct SummaryView: View {
+    @ObservedObject private var viewModelE = ExerciseFieldViewModel()
+    @ObservedObject private var viewModel = infoView()
+    @State var selection = ""
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+           /* Picker("", selection: $selection) {
+                ForEach(viewModelE.exercises, id: \.self) { exercise in
+                    Text(exercise.Exercise_Name).tag(exercise.Exercise_Name)
+             */
+                    ForEach(viewModel.info){ infor in
+                        Text(infor.WName)
+                        
+                    }
+                }
+        .task {
+         try? await viewModel.getallsets()
+        }
     }
 }
 

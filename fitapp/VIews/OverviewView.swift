@@ -20,7 +20,6 @@ struct OverviewView: View {
                 .foregroundColor(background)
             VStack{
                 Text(Name)
-                .offset(x: -130, y: -30)
                 ForEach(0..<set, id: \.self){ setIndex in
                     HStack {
                         VStack{

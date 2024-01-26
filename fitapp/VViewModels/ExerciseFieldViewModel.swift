@@ -26,19 +26,20 @@ class ExerciseFieldViewModel: ObservableObject{
                 print("No documents")
                 return
             }
-            self.exercises = documents.compactMap { (queryDocumentSnapshot) -> Exe? in
-                let data = queryDocumentSnapshot.data()
-                
-                guard   let Exercise_Name = data["Exercise_Name"] as? String, !Exercise_Name.isEmpty else {
-                    return nil
+            DispatchQueue.main.async{
+                self.exercises = documents.compactMap { (queryDocumentSnapshot) -> Exe? in
+                    let data = queryDocumentSnapshot.data()
+                    
+                    guard   let Exercise_Name = data["Exercise_Name"] as? String, !Exercise_Name.isEmpty else {
+                        return nil
+                    }
+                    
+                    
+                    return Exe(Exercise_Name: Exercise_Name)
+                    
+                    
                 }
-                
-                
-               return Exe(Exercise_Name: Exercise_Name)
-                
-                
             }
-            
         }
     }
 }

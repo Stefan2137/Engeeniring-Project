@@ -10,7 +10,6 @@ import FirebaseFirestoreSwift
 class ExerciseListViewViewModel: ObservableObject{
     @Published var exercises = [Exercise]()
     private var db = Firestore.firestore()
-    private var dbe = Firestore.firestore()
     @Published var sortOption: SortOption = .name
     
     
