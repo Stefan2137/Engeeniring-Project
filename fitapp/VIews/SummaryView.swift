@@ -11,22 +11,25 @@ import Charts
 
 
 struct SummaryView: View {
-    @ObservedObject private var viewModelE = ExerciseFieldViewModel()
+   // @ObservedObject private var viewModelE = ExerciseFieldViewModel()
     @ObservedObject private var viewModel = infoView()
     @State var selection = ""
     var body: some View {
         VStack{
-           /* Picker("", selection: $selection) {
-                ForEach(viewModelE.exercises, id: \.self) { exercise in
-                    Text(exercise.Exercise_Name).tag(exercise.Exercise_Name)
-             */
-                    ForEach(viewModel.info){ infor in
+                  /*  ForEach(viewModel.info){ infor in
                         Text(infor.WName)
                         
-                    }
+                    }*/
+            Picker("", selection: $selection) {
+                ForEach(viewModel.exeName, id: \.self) { exercise in
+                    Text(exercise.id).tag(exercise.id)
+                
+                }
+            }
                 }
         .task {
-         try? await viewModel.getallsets()
+        try? await viewModel.getallname()
+        try? await viewModel.getallsets()
         }
     }
 }

@@ -32,6 +32,10 @@ struct NewSetView: View {
                     {
                         let currentCount = viewModel.title.count
                         viewModel.title[currentCount + 1] = ""
+                        viewModel.save()
+                        viewModel.index += 1
+                        print(viewModel.index)
+                        
                     }
                     
                     .padding()
@@ -42,13 +46,15 @@ struct NewSetView: View {
                     ToolbarItem(placement: .topBarTrailing)
                     {
                         TLButton(title: "Save", background: .blue, titlebackground: .white){
-                            if viewModel.canSave{
-                                viewModel.save()
-                                newSetItemPresented = false
-                            }else{
-                                viewModel.showAlert = true
-                                
-                            }
+                            viewModel.updatecollection()
+                            newSetItemPresented = false
+                          //  if viewModel.canSave{
+                        //        viewModel.save()
+                     //
+                        //    }else{
+                       //         viewModel.showAlert = true
+                      //
+                        //    }
                             
                         }
                         .font(.system(size: 20))

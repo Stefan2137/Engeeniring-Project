@@ -9,17 +9,21 @@ import Foundation
 
 struct SetInformation: Codable, Identifiable{
     let id: String
-    let ExeName: [Int:String]
-    let setnumbers: [Int:Int]
+    let ExeName: ExerciseInfo
     let time: TimeInterval
     var isDone: Bool
-    let numberreps: [Int:[Int]]
-    let weight: [Int:[Double]]
-    let WName: String
-
     
     
     mutating func setDone(_ state: Bool){
      isDone = state
     }
 }
+
+struct ExerciseInfo: Codable{
+    let Name: String
+    let setnumbers: Int
+    let numberreps: [Int]
+    let weight: [Double]
+}
+
+

@@ -5,7 +5,6 @@
 //  Created by Kuba Stefański on 26/01/2024.
 //
 
-import Foundation
 import FirebaseFirestore
 import Foundation
 import FirebaseFirestoreSwift
@@ -16,25 +15,39 @@ class FirebaseMenager {
     private init() {}
     
     private let exeDB = Firestore.firestore().collection("cwiczenia")
+    private let dbs = Firestore.firestore().collection("users/UlGceoDOlTUvw2eWJCNUACbQu5b2/setsinfo")
     
     private func workoutinfo(workoutId: String) -> DocumentReference {
         dbs.document(workoutId)
     }
     
-    func getALLExeName() async throws -> [Exe]
+    func getALLExeName() async throws -> [Exercise]
     {
-        let snapshot = try await exeDB.getDocuments()
+        try await exeDB.getDocuments(as: Exercise.self)
+    }
+    func getAllExeSortedByName(descending:Bool) async throws -> [Exercise] {
         
-        var exercises: [Exe] = []
+        try await exeDB.order(by:"id" , descending: descending).getDocuments(as: Exercise.self)
+    }
+    func getAllExeSortedByMuscle(descending:Bool) async throws -> [Exercise] {
         
-        for document in snapshot.documents {
-            let exer = try document.data(as: Exe.self)
-            exercises.append(exer)
-        }
-        return exercises
+        try await exeDB.order(by:"Muscle_Group" , descending: descending).getDocuments(as: Exercise.self)
+    }
+    func getAllExeSortedByGrip(descending:Bool) async throws -> [Exercise] {
+        
+        try await exeDB.order(by:"Grip" , descending: descending).getDocuments(as: Exercise.self)
+    }
+    func getAllExeSortedByDiff(descending:Bool) async throws -> [Exercise] {
+        
+        try await exeDB.order(by:"Difficulty_Level" , descending: descending).getDocuments(as: Exercise.self)
     }
     
-    private let dbs = Firestore.firestore().collection("users/UlGceoDOlTUvw2eWJCNUACbQu5b2/setsinfo")
+  //  func getallSetinfo(exercisename: String)async throws ->[SetInformation]{
+    //    try await dbs
+    //        .whereField(SetInformation.CodingKeys.ExeName.rawValue, isEqualTo: exercisename)
+            
+   // }
+   
     
     func getSetInfo(workoutId: String) async throws -> SetInformation {
         try await workoutinfo(workoutId: workoutId).getDocument(as: SetInformation.self)
@@ -44,6 +57,9 @@ class FirebaseMenager {
     {
         try await dbs.getDocuments(as: SetInformation.self)
     }
+    
+    
+    
  
 }
 

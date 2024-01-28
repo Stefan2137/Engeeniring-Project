@@ -4,7 +4,7 @@
 //
 //  Created by Kuba Stefański on 17/10/2023.
 //
-import FirebaseFirestore
+/*import FirebaseFirestore
 import Foundation
 import FirebaseFirestoreSwift
 class ExerciseListViewViewModel: ObservableObject{
@@ -43,7 +43,7 @@ class ExerciseListViewViewModel: ObservableObject{
                 let Single_Or_Double_Arm = data["Single_Or_Double_Arm"] as? String ?? ""
                 let Tertiary_Muscle = data["Tertiary_Muscle"] as? String ?? ""
                 
-                return Exercise(Exercise_Name: Exercise_Name,Difficulty_Level: Difficulty_Level,  Exercise_Classification: Exercise_Classification, Grip: Grip, Muscle_Group: Muscle_Group, Posture: Posture, Primary_Equipment: Primary_Equipment, Prime_Mover_Muscle: Prime_Mover_Muscle, Secondary_Equipment: Secondary_Equipment, Secondary_Muscle: Secondary_Muscle, Short_Youtube_Demonstration: Short_Youtube_Demonstration, Single_Or_Double_Arm: Single_Or_Double_Arm, Tertiary_Muscle: Tertiary_Muscle)
+                return Exercise(id: UUID().uuidString, Exercise_Name: Exercise_Name,Difficulty_Level: Difficulty_Level,  Exercise_Classification: Exercise_Classification, Grip: Grip, Muscle_Group: Muscle_Group, Posture: Posture, Primary_Equipment: Primary_Equipment, Prime_Mover_Muscle: Prime_Mover_Muscle, Secondary_Equipment: Secondary_Equipment, Secondary_Muscle: Secondary_Muscle, Short_Youtube_Demonstration: Short_Youtube_Demonstration, Single_Or_Double_Arm: Single_Or_Double_Arm, Tertiary_Muscle: Tertiary_Muscle)
                 
                 
             }
@@ -59,9 +59,10 @@ class ExerciseListViewViewModel: ObservableObject{
         case .grip:
             return exercises.sorted{$0.Grip < $1.Grip}
         case .muscle:
-            return exercises.sorted{$0.Muscle_Group < $1.Muscle_Group}
+            return exercises.sorted{$0.Muscle_Group ?? "no key" < $1.Muscle_Group ?? "No key"}
         }
     }
     
     
 }
+*/

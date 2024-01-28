@@ -23,27 +23,27 @@ struct SetsView: View {
     var body: some View {
         NavigationView{
             VStack{
-                List(items) { item in
-                    NavigationLink(destination: SetsOverview(item: item.WName, exName: item.ExeName, setNumber: item.setnumbers, time1: item.time, repsarr: item.numberreps, weightarr: item.weight)) {
-                                        SetCard(title: item.WName, isDone: false)
-                                    }
-                                }
-                            }
+                List() { Text("Elo")
+                    Text("elo2")
+                    //  NavigationLink(destination: SetsOverview(item: item.WName, exName: item.ExeName, setNumber: item.setnumbers, time1: item.time, repsarr: item.numberreps, weightarr: item.weight)) {
+                    //     SetCard(title: item.WName, isDone: false)
+                }
+            }
             .navigationTitle("Workout")
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
                     HStack{
                         Image(systemName: "calendar")
                             .foregroundColor(.blue)
-                          /*  .overlay{
-                                DatePicker("",selection: $viewModel.EDate
-                                           ,displayedComponents:.date)
-                                .frame(width: 23,height: 20)
-                                .clipped()
-                                .blendMode(.destinationOver)
-                            }
-                            */
-                        .offset(x:-4,y: -5)
+                        /*  .overlay{
+                         DatePicker("",selection: $viewModel.EDate
+                         ,displayedComponents:.date)
+                         .frame(width: 23,height: 20)
+                         .clipped()
+                         .blendMode(.destinationOver)
+                         }
+                         */
+                            .offset(x:-4,y: -5)
                         
                         Button{
                             viewModel.showingNewSetItemView = true
@@ -51,7 +51,7 @@ struct SetsView: View {
                             Image(systemName: "plus")
                         }
                         .offset(x:0,y:-5)
-
+                        
                     }
                 }
                 

@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ExerciseField: View {
     @EnvironmentObject var viewModel: NewSetViewViewModel
-    @ObservedObject private var viewModelE = ExerciseFieldViewModel()
+   // @ObservedObject private var viewModelE = ExerciseFieldViewModel()
+    @ObservedObject private var viewModelE = infoView()
     let index: Int
-    @State private var field = ""
+    @State private var field = "Choose your Exercise"
     @State private var numberofset = 1
     @State private var weight = [0.0]
     @State private var reps = [0]
@@ -21,13 +22,12 @@ struct ExerciseField: View {
     var body: some View {
         if show{
             VStack {
-                
                 Picker("", selection: $field) {
-                    ForEach(viewModelE.exercises, id: \.self) { exercise in
-                        Text(exercise.Exercise_Name).tag(exercise.Exercise_Name)
-                        
+                        ForEach(self.viewModelE.exeName, id: \.id) { exercise in
+                            Text(exercise.id).tag(exercise.id)
+                        }
                     }
-                }
+                    .pickerStyle(.menu)
                 
                 .offset(x:-30)
                 
@@ -52,6 +52,7 @@ struct ExerciseField: View {
             .onChange(of: field)
             {
                 viewModel.title[index] = field
+        
             }
             .onChange(of: weight)
             {
@@ -63,10 +64,16 @@ struct ExerciseField: View {
             }
             .onAppear {
                 show = true 
+                
             }
             .onDisappear {
                 show = false
             }
+            .task{
+               
+                  try? await  self.viewModelE.getallname()
+            }
+           
             
         }
     }

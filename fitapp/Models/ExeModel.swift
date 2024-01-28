@@ -8,6 +8,6 @@
 import Foundation
 
 struct Exe: Identifiable , Codable, Hashable{
-    var id: String = UUID().uuidString
-    var Exercise_Name: String
+    let id: String
+    let Exercise_Name: String
 }
