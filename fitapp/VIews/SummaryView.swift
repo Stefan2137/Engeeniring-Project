@@ -20,17 +20,14 @@ struct SummaryView: View {
                 ForEach(viewModelE.exercises, id: \.self) { exercise in
                     Text(exercise.Exercise_Name).tag(exercise.Exercise_Name)
              */
-                    ForEach(viewModel.info){ infor in
+                        ForEach(viewModel.info){ infor in
                         Text(infor.WName)
                         
                     }
                 }
         .task {
          try? await viewModel.getallsets()
-        }
-        .onAppear()
-        {
-            viewModel.searchFor()
+            viewModel.search()
         }
     }
 }

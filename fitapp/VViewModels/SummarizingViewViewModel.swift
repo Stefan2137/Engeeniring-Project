@@ -23,6 +23,7 @@ class infoView:ObservableObject {
     func getallsets() async throws
     {
         self.info = try await  FirebaseMenager.shared.FetchData()
+        print(info)
     }
     
     func getallname() async throws
@@ -40,47 +41,48 @@ class infoView:ObservableObject {
             self.exeName = try await FirebaseMenager.shared.getAllExeSortedByGrip(descending: true)
         case .muscle:
             self.exeName = try await FirebaseMenager.shared.getAllExeSortedByMuscle(descending: true)
-
+            
         }
         self.sortOption = option
     }
-   
-    func searchFor() {
-        guard let uId = Auth.auth().currentUser?.uid else {
-            print("User not authenticated")
-            return
-        }
+    
+ 
+    var matchingKey: Int? = nil
+    let searchString = "Dumbbell Seated Scaption"
+    var weights: [Double] = []
+    var names: [String] = []
+    var intervals: [TimeInterval] = []
+    var matchingKeys: [Int] = []
 
-        let valueToSearchFor = "Dumbbell Seated Scaption"
-        let myCollRef = Firestore.firestore().collection("users/\(uId)/setsinfo")
+    func search() {
+        for (index, data) in info.enumerated() {
+               for (key, value) in data.ExeName {
+                   if value == searchString {
+                       matchingKeys.append(key)
 
-        let query = myCollRef.whereField("ExeName", arrayContains: valueToSearchFor).limit(to: 1)
+                       // Add entire weight array to the 'weights' array
+                       if let weightArray = data.weight[key] {
+                           weights.append(contentsOf: weightArray)
+                       }
 
-        query.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                if let document = querySnapshot?.documents.first {
-                    let theData = document.data()
+                       // Add name to the 'names' array
+                       names.append(data.ExeName[key] ?? "")
 
-                    if let position = (theData["ExeName"] as? [String])?.firstIndex(of: valueToSearchFor) {
-                        if let numberRepsArray = theData["weight"] as? [Double], position < numberRepsArray.count {
-                            let numberOfReps = numberRepsArray[position]
-                            print("Number of reps:", numberOfReps)
-                        }
-                    } else {
-                        print("Search term not found in 'ExeName' field")
-                    }
-                } else {
-                    print("No documents found")
-                }
-            }
-        }
+                       // Add time to the 'intervals' array
+                       intervals.append(data.time)
+
+                       // Print the key and index in 'info' array
+                       print("Key found in info[\(index)]: \(key)")
+                   }
+               }
+           }
+
+           if matchingKeys.isEmpty {
+               print("Key not found for value: \(searchString)")
+           }
+        print("Matching Keys: \(matchingKeys)")
+        print("Weights: \(weights)")
+        print("Names: \(names)")
+        print("Intervals: \(intervals)")
     }
-
-    
-    
-    
 }
-
-
