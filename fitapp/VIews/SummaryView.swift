@@ -16,33 +16,54 @@ struct SummaryView: View {
     @State var selection = "Dumbbell Seated Scaption"
     
     var body: some View {
-        VStack{
-            Chart(viewModel.chartData){dataPoint in
-                ForEach(dataPoint.weig.indices, id: \.self){ index in
-                    BarMark(x: .value("Time", dataPoint.formattedDay),
-                            y: .value("Weight", dataPoint.weig[index]))
-                }
-                
-            }
-            .chartXScale(domain: 0...32)
-            Picker("", selection: $selection) {
-                ForEach(viewModelE.exercises, id: \.self) { exercise in
-                    Text(exercise.Exercise_Name).tag(exercise.Exercise_Name)
+            VStack{
+                ScrollView{
+                Text("Summary of weights \(selection)")
+                Chart(viewModel.chartData){dataPoint in
+                    ForEach(dataPoint.weig.indices, id: \.self){ index in
+                        BarMark(x: .value("Time", dataPoint.formattedDay, unit: .day),
+                                y: .value("Weight", dataPoint.weig[index]))
+                        .annotation {
+                            Text("\(viewModel.forTrailingZero(dataPoint.weig[index]))")
+                        }
+                        .position(by:.value("weight", dataPoint.weig[index]))
+                    }
+                    
+                    // .position(by:.value("day", dataPoint.formattedDay))
+                    
                     
                 }
-            }
-            
-            .task {
-                try? await viewModel.getallsets()
-                viewModel.searchAndUpdate(searchString: selection)
-                for data in viewModel.chartData {
-                    print(data.formattedDay)
-                    print(data.weig)
+                .chartXAxis
+                {
+                    AxisMarks(values: .stride(by: .day))
+                    { date in
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.weekday(.narrow), centered: true)
+                    }
+                }
+                .aspectRatio(1,contentMode: .fit)
+                Picker("", selection: $selection) {
+                            ForEach(self.viewModel.exeName, id: \.id) { exercise in
+                                Text(exercise.id).tag(exercise.id)
+                            }
+                        }
+                        .pickerStyle(.menu)
+                .padding()
+                .task {
+                    try? await viewModel.getallsets()
+                    try? await viewModel.getallname()
+                    viewModel.searchAndUpdate(searchString: selection)
+                    }
+                .onChange(of: selection)
+                    {
+                    viewModel.chartData = []
+                    viewModel.searchAndUpdate(searchString: selection)
+                }
                 }
             }
         }
     }
-}
+
 
 struct SummaryView_Previews : PreviewProvider {
     static var previews: some View{

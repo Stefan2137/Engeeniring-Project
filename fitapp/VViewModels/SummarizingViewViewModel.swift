@@ -60,7 +60,7 @@ class infoView:ObservableObject {
            let currentDate = Date()
            let sevenDaysAgo = currentDate.addingTimeInterval(-sevenDaysInSeconds)
            
-           for (index, data) in info.enumerated() {
+        for (_, data) in info.enumerated() {
                for (key, value) in data.ExeName {
                    if value == searchString {
                       
@@ -77,4 +77,8 @@ class infoView:ObservableObject {
                }
            }
        }
+    func forTrailingZero(_ temp: Double) -> String {
+        let tempVar = String(format: "%g", temp)
+        return tempVar
+    }
 }

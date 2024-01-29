@@ -46,7 +46,6 @@
 		8CB276382B32463000601B16 /* SetCardViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB276372B32463000601B16 /* SetCardViewViewModel.swift */; };
 		8CB2763A2B326E1800601B16 /* ExerciseInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB276392B326E1800601B16 /* ExerciseInfoViewModel.swift */; };
 		8CBD79092B572D73004DDFD9 /* OverViewVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBD79082B572D73004DDFD9 /* OverViewVIewModel.swift */; };
-		8CC672EB2B13B863003C31E7 /* CButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC672EA2B13B863003C31E7 /* CButton.swift */; };
 		8CCADAE92B06D1F30019267B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCADAE82B06D1F30019267B /* HeaderView.swift */; };
 		8CCADAEB2B06D5730019267B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCADAEA2B06D5730019267B /* RegisterView.swift */; };
 		8CCE49882ADC82F300F51897 /* BmiCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCE49872ADC82F300F51897 /* BmiCalculator.swift */; };
@@ -119,7 +118,6 @@
 		8CB276372B32463000601B16 /* SetCardViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardViewViewModel.swift; sourceTree = "<group>"; };
 		8CB276392B326E1800601B16 /* ExerciseInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoViewModel.swift; sourceTree = "<group>"; };
 		8CBD79082B572D73004DDFD9 /* OverViewVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewVIewModel.swift; sourceTree = "<group>"; };
-		8CC672EA2B13B863003C31E7 /* CButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CButton.swift; sourceTree = "<group>"; };
 		8CCADAE82B06D1F30019267B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		8CCADAEA2B06D5730019267B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		8CCE49872ADC82F300F51897 /* BmiCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiCalculator.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 				8CCADAEA2B06D5730019267B /* RegisterView.swift */,
 				8CA0011E2B07CDE400DBB614 /* TLButton.swift */,
 				8C86E8672B0FBA66006B8582 /* SummaryView.swift */,
-				8CC672EA2B13B863003C31E7 /* CButton.swift */,
 				8CEE0AF42B45C3C00088EA9B /* SetsOverview.swift */,
 				8C8F097C2B512A67003188FD /* OverviewView.swift */,
 				8CEE0AF62B45C7A70088EA9B /* ExerciseInfromationView.swift */,
@@ -479,7 +476,6 @@
 				8CFBCA9A2AE05E03001AC6A2 /* SettingViewModel.swift in Sources */,
 				8C3008FF2B4E157800512308 /* ExerciseViewWithoutButton.swift in Sources */,
 				8C7B5E092B0E691A005C6C7F /* Exercise.swift in Sources */,
-				8CC672EB2B13B863003C31E7 /* CButton.swift in Sources */,
 				8CCE498F2ADC83FC00F51897 /* SetsView.swift in Sources */,
 				8CA001212B07D4FE00DBB614 /* LoginViewViewModel.swift in Sources */,
 				8C4CBDC72ABEFB03008C92D0 /* fitappApp.swift in Sources */,
