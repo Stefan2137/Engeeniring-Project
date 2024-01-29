@@ -8,6 +8,7 @@
 import FirebaseFirestore
 import Foundation
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 class infoView:ObservableObject {
     
@@ -44,6 +45,41 @@ class infoView:ObservableObject {
         self.sortOption = option
     }
    
+    func searchFor() {
+        guard let uId = Auth.auth().currentUser?.uid else {
+            print("User not authenticated")
+            return
+        }
+
+        let valueToSearchFor = "Dumbbell Seated Scaption"
+        let myCollRef = Firestore.firestore().collection("users/\(uId)/setsinfo")
+
+        let query = myCollRef.whereField("ExeName", arrayContains: valueToSearchFor).limit(to: 1)
+
+        query.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                if let document = querySnapshot?.documents.first {
+                    let theData = document.data()
+
+                    if let position = (theData["ExeName"] as? [String])?.firstIndex(of: valueToSearchFor) {
+                        if let numberRepsArray = theData["weight"] as? [Double], position < numberRepsArray.count {
+                            let numberOfReps = numberRepsArray[position]
+                            print("Number of reps:", numberOfReps)
+                        }
+                    } else {
+                        print("Search term not found in 'ExeName' field")
+                    }
+                } else {
+                    print("No documents found")
+                }
+            }
+        }
+    }
+
+    
+    
     
 }
 

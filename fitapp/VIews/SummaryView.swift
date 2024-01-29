@@ -28,6 +28,10 @@ struct SummaryView: View {
         .task {
          try? await viewModel.getallsets()
         }
+        .onAppear()
+        {
+            viewModel.searchFor()
+        }
     }
 }
 
