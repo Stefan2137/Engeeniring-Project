@@ -13,24 +13,33 @@ import Charts
 struct SummaryView: View {
     @ObservedObject private var viewModelE = ExerciseFieldViewModel()
     @ObservedObject private var viewModel = infoView()
-    @State var selection = ""
-    var elo = "Dumbbell Seated Scaption"
-
-
+    @State var selection = "Dumbbell Seated Scaption"
+    
     var body: some View {
         VStack{
-           /* Picker("", selection: $selection) {
+            Chart(viewModel.chartData){dataPoint in
+                ForEach(dataPoint.weig.indices, id: \.self){ index in
+                    BarMark(x: .value("Time", dataPoint.formattedDay),
+                            y: .value("Weight", dataPoint.weig[index]))
+                }
+                
+            }
+            .chartXScale(domain: 0...32)
+            Picker("", selection: $selection) {
                 ForEach(viewModelE.exercises, id: \.self) { exercise in
                     Text(exercise.Exercise_Name).tag(exercise.Exercise_Name)
-             */
-                        ForEach(viewModel.info){ infor in
-                        Text(infor.WName)
-                        
-                    }
+                    
                 }
-        .task {
-         try? await viewModel.getallsets()
-            viewModel.search(searchString: elo)
+            }
+            
+            .task {
+                try? await viewModel.getallsets()
+                viewModel.searchAndUpdate(searchString: selection)
+                for data in viewModel.chartData {
+                    print(data.formattedDay)
+                    print(data.weig)
+                }
+            }
         }
     }
 }
