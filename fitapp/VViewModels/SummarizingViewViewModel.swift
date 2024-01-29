@@ -46,41 +46,39 @@ class infoView:ObservableObject {
         self.sortOption = option
     }
     
- 
+    
     var matchingKey: Int? = nil
-    let searchString = "Dumbbell Seated Scaption"
     var weights: [Double] = []
-    var names: [String] = []
+    var names: String = ""
     var intervals: [TimeInterval] = []
     var matchingKeys: [Int] = []
-
-    func search() {
+    
+    func search(searchString: String) {
+        let sevenDaysInSeconds: TimeInterval = 7 * 24 * 60 * 60 // 7 days in seconds
+        let currentDate = Date()
+        let sevenDaysAgo = currentDate.addingTimeInterval(-sevenDaysInSeconds)
+        
         for (index, data) in info.enumerated() {
-               for (key, value) in data.ExeName {
-                   if value == searchString {
-                       matchingKeys.append(key)
-
-                       // Add entire weight array to the 'weights' array
-                       if let weightArray = data.weight[key] {
-                           weights.append(contentsOf: weightArray)
-                       }
-
-                       // Add name to the 'names' array
-                       names.append(data.ExeName[key] ?? "")
-
-                       // Add time to the 'intervals' array
-                       intervals.append(data.time)
-
-                       // Print the key and index in 'info' array
-                       print("Key found in info[\(index)]: \(key)")
-                   }
-               }
-           }
-
-           if matchingKeys.isEmpty {
-               print("Key not found for value: \(searchString)")
-           }
-        print("Matching Keys: \(matchingKeys)")
+            var found = false // Flag to indicate if a match is found for the current 'data'
+            
+            for (key, value) in data.ExeName {
+                guard value == searchString else {
+                    continue
+                }
+                
+                // Check if the time interval is within the last 7 days
+                if let weightArray = data.weight[key], data.time > sevenDaysAgo.timeIntervalSince1970 {
+                    weights.append(contentsOf: weightArray)
+                    names = data.ExeName[key] ?? ""
+                    intervals.append(data.time)
+                    
+                    print("Key found in info[\(index)]: \(key)")
+                    found = true
+                    break // Break out of the inner loop once a match is found
+                }
+            }
+        }
+        
         print("Weights: \(weights)")
         print("Names: \(names)")
         print("Intervals: \(intervals)")

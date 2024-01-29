@@ -14,6 +14,9 @@ struct SummaryView: View {
     @ObservedObject private var viewModelE = ExerciseFieldViewModel()
     @ObservedObject private var viewModel = infoView()
     @State var selection = ""
+    var elo = "Dumbbell Seated Scaption"
+
+
     var body: some View {
         VStack{
            /* Picker("", selection: $selection) {
@@ -27,7 +30,7 @@ struct SummaryView: View {
                 }
         .task {
          try? await viewModel.getallsets()
-            viewModel.search()
+            viewModel.search(searchString: elo)
         }
     }
 }
