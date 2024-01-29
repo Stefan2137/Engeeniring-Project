@@ -78,7 +78,7 @@ class infoView:ObservableObject {
            }
        }
     func forTrailingZero(_ temp: Double) -> String {
-        let tempVar = String(format: "%g", temp)
+        var tempVar = String(format: "%g", temp)
         return tempVar
     }
 }

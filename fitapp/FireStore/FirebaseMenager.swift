@@ -8,15 +8,22 @@
 import FirebaseFirestore
 import Foundation
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 class FirebaseMenager {
     static let shared = FirebaseMenager()
     
     private init() {}
-    
+    private var uId: String {
+            return Auth.auth().currentUser?.uid ?? ""
+        }
     private let exeDB = Firestore.firestore().collection("cwiczenia")
-    private let dbs = Firestore.firestore().collection("users/UlGceoDOlTUvw2eWJCNUACbQu5b2/setsinfo")
+    private var dbs: CollectionReference {
+            return Firestore.firestore().collection("users/\(uId)/setsinfo")
+        }
     
+    
+   
     private func workoutinfo(workoutId: String) -> DocumentReference {
         dbs.document(workoutId)
     }
