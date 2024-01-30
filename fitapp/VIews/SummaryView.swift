@@ -52,6 +52,7 @@ struct SummaryView: View {
                 .task {
                     try? await viewModel.getallsets()
                     try? await viewModel.getallname()
+                    viewModel.chartData = []
                     viewModel.searchAndUpdate(searchString: selection)
                     }
                 .onChange(of: selection)

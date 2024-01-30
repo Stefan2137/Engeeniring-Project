@@ -16,35 +16,49 @@ struct customShadow:ViewModifier{
 
 
 struct SetCard: View {
-    
-    let title: String
-    let isDone: Bool
+    @StateObject var viewModel = SetCardViewViewModel()
+    let item:SetInformation
     var body: some View {
-        VStack {
-            HStack {
-                Text(title)
-                    .offset(x: -100 ,y:-10)
+        HStack{
+            VStack(alignment: .leading)
+             {
+             
+                 Text(item.WName)
+                    .offset(x: -80 ,y:10)
                     .font(.title2)
                     .frame(width: 160,alignment: .leadingFirstTextBaseline)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
                     .scaledToFit()
+                    .bold()
+                    .frame(width: 300, height: 30)
+                    .minimumScaleFactor(0.6)
                     
             }
-            .bold()
-            .frame(width: 400, height: 30)
-            .minimumScaleFactor(0.6)
+            
+            
+            Button{
+                viewModel.toogleIsDone(item: item)
+            } label: {
+                Image(systemName: item.isDone ?
+                      "checkmark.circle.fill": "circle")
+            }
+            .offset(x:-20,y: 17)
+            
         }
         .offset(x: 20, y: -20)
-        .frame(width: 380, height: 110)
+        .frame(width: 380, height: 80)
         .background(.white)
         .cornerRadius(10)
         .modifier(customShadow())
+        
+        
+        
     }
 }
 
 struct SetCard_Previews: PreviewProvider {
     static var previews: some View {
-        SetCard(title: "Dsadasd" ,isDone: false)
+        SetCard( item: SetInformation(id: "xd", ExeName: [1:"gg"], setnumbers: [0 : 0], time: 311231, isDone: true, numberreps: [2 : [2]], weight: [2 : [55.5]], WName: "Elo"))
     }
 }

@@ -6,10 +6,27 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseFirestore
 class SetCardViewViewModel: ObservableObject
 {
-    @Published var title = ""
-    @Published var status = ""
-    @Published var time = ""
     init(){}
+    
+    func toogleIsDone(item: SetInformation)
+    {
+        var itemCopy = item
+        itemCopy.setDone(!item.isDone)
+        
+        guard let uid = Auth.auth().currentUser?.uid else
+        {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(uid)
+            .collection("setsinfo")
+            .document(itemCopy.id)
+            .setData(itemCopy.asDictionary())
+    }
 }

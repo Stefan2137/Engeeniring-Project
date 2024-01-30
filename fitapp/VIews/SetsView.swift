@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseFirestoreSwift
 
 struct SetsView: View {
-    @StateObject var viewModel = SetsViewViewModel()
+    @StateObject var viewModel: SetsViewViewModel
     @FirestoreQuery var items: [SetInformation]
     @State private var isDatePickerPresented = false
     
@@ -18,33 +18,37 @@ struct SetsView: View {
         
         self._items = FirestoreQuery(
             collectionPath: "users/\(userId)/setsinfo")
+        
+        self._viewModel = StateObject(wrappedValue: SetsViewViewModel(userId: userId))
+        
     }
     
     var body: some View {
         NavigationView{
             VStack{
                 List(items) { item in
-                    NavigationLink(destination: SetsOverview(item: item.WName, exName: item.ExeName, setNumber: item.setnumbers, time1: item.time, repsarr: item.numberreps, weightarr: item.weight)) {
-                                        SetCard(title: item.WName, isDone: false)
+                    NavigationLink(destination: SetsOverview(item: item.WName, exName: item.ExeName, setNumber: item.setnumbers, time1: item.time, repsarr: item.numberreps, weightarr: item.weight))
+                    {
+                                        
+                        SetCard(item: item)
+                            .swipeActions{
+                                Button{
+                                    viewModel.delete(id: item.id)
+                                } label: {
+                                    Text("Delete")
+                                        .tint(Color.red)
+                                }
+                            }
                                     }
+                    .buttonStyle(.borderless)
+                    
+                    
                                 }
                             }
             .navigationTitle("Workout")
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
                     HStack{
-                        Image(systemName: "calendar")
-                            .foregroundColor(.blue)
-                          /*  .overlay{
-                                DatePicker("",selection: $viewModel.EDate
-                                           ,displayedComponents:.date)
-                                .frame(width: 23,height: 20)
-                                .clipped()
-                                .blendMode(.destinationOver)
-                            }
-                            */
-                        .offset(x:-4,y: -5)
-                        
                         Button{
                             viewModel.showingNewSetItemView = true
                         }label: {
