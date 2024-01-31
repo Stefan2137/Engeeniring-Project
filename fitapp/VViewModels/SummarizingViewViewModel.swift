@@ -28,7 +28,6 @@ class infoView:ObservableObject {
     func getallsets() async throws
     {
         self.info = try await  FirebaseMenager.shared.FetchData()
-        print(info)
     }
     
     func getallname() async throws

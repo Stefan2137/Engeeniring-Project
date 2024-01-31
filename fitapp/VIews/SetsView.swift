@@ -31,6 +31,7 @@ struct SetsView: View {
                     {
                                         
                         SetCard(item: item)
+                            .buttonStyle(.borderless)
                             .swipeActions{
                                 Button{
                                     viewModel.delete(id: item.id)
@@ -40,7 +41,7 @@ struct SetsView: View {
                                 }
                             }
                                     }
-                    .buttonStyle(.borderless)
+                    
                     
                     
                                 }

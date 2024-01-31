@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct customShadow:ViewModifier{
+    @Environment(\.colorScheme) var colorScheme
     func body(content: Content) -> some View {
         content
             .shadow(color: .black.opacity(0.2),radius: 20, x:0 ,y: 0)
@@ -17,6 +18,7 @@ struct customShadow:ViewModifier{
 
 struct SetCard: View {
     @StateObject var viewModel = SetCardViewViewModel()
+    @Environment(\.colorScheme) var colorScheme
     let item:SetInformation
     var body: some View {
         HStack{
@@ -25,6 +27,7 @@ struct SetCard: View {
              
                  Text(item.WName)
                     .offset(x: -80 ,y:10)
+                    .foregroundColor(colorScheme == .dark ? Color.black : Color.black)
                     .font(.title2)
                     .frame(width: 160,alignment: .leadingFirstTextBaseline)
                     .lineLimit(1)
@@ -33,6 +36,7 @@ struct SetCard: View {
                     .bold()
                     .frame(width: 300, height: 30)
                     .minimumScaleFactor(0.6)
+                    
                     
             }
             
@@ -48,7 +52,7 @@ struct SetCard: View {
         }
         .offset(x: 20, y: -20)
         .frame(width: 380, height: 80)
-        .background(.white)
+        .background(colorScheme == .dark ? Color.gray : Color.white)
         .cornerRadius(10)
         .modifier(customShadow())
         

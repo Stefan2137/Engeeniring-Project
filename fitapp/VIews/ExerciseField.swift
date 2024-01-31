@@ -52,7 +52,9 @@ struct ExerciseField: View {
             .onChange(of: field)
             {
                 viewModel.title[index] = field
-        
+                Task{
+                    try? await  self.viewModelE.getallname()
+                }
             }
             .onChange(of: weight)
             {

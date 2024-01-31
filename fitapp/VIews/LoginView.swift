@@ -13,8 +13,8 @@ struct LoginView: View {
         NavigationView{
             VStack{
                 //Header
-                HeaderView(tittle: "Workout app",
-                           subtittle: "xDD",
+                HeaderView(tittle: "Workout",
+                           subtittle: "Planner",
                            angel: 15,
                            backgroundcolor: Color.pink)
                 
