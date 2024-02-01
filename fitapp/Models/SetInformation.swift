@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct SetModel:Codable, Identifiable {
+    let id: String
+    let WName: String
+    let Set:[SetInformation]
+   }
+
 struct SetInformation: Codable, Identifiable{
     let id: String
     let ExeName: [Int:String]

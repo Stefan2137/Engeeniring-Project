@@ -38,7 +38,7 @@ struct MainView: View {
                 }
             SettingsView()
                 .tabItem {
-                    Label("settings", systemImage: "gear")
+                    Label("Profile", systemImage: "gear")
                 }
             
             

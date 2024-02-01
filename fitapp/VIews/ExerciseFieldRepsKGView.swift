@@ -14,9 +14,6 @@ struct ExerciseFieldRepsKG: View {
     let setnumber: Int
     @Binding var w:[Double]
     @Binding var r:[Int]
-
-    
-    
     var body: some View {
         
             HStack {
@@ -25,6 +22,7 @@ struct ExerciseFieldRepsKG: View {
                     Text("\(index + 1)")
                       
                 }
+                .offset(x: -15)
                 .scaledToFit()
                 VStack {
                         Text("Kg/lbs")
@@ -32,9 +30,10 @@ struct ExerciseFieldRepsKG: View {
                     TextField("Kg/lbs",value:$w[index] ,format: .number)
                         .keyboardType(.decimalPad)
                         .padding()
-                        .contentShape(Rectangle())
-                        .frame(width: 100 ,height: 30)
+                        
+                        .frame(width: 60 ,height: 30)
                         .border(.black,width:1)
+                        .multilineTextAlignment(.center)
                         
                             }
                 .scaledToFit()
@@ -51,7 +50,6 @@ struct ExerciseFieldRepsKG: View {
                                .frame(width: 70,height: 10)
                                .padding()
                                .contentShape(Rectangle())
-                               .border(.black,width:1)
                            }
                 .scaledToFit()
             }

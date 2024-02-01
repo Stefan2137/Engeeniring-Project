@@ -28,7 +28,7 @@ struct ExerciseList: View {
             }
             .toolbar(content:{
                 ToolbarItem(placement: .navigationBarLeading){
-                    Menu("Filter: \(viewModel.sortOption?.rawValue ?? "none")"){
+                    Menu("Filter: \(viewModel.sortOption?.rawValue ?? "None")"){
                         ForEach(infoView.SortOption.allCases, id: \.self){
                             filterOption in
                             Button(filterOption.rawValue){

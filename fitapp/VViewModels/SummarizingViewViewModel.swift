@@ -22,7 +22,7 @@ class infoView:ObservableObject {
     @Published var chartData:[Summary] = []
     
     enum SortOption:String, CaseIterable{
-        case name,diff,grip,muscle
+        case Name,Diff,Grip,Muscle
     }
     
     func getallsets() async throws
@@ -37,13 +37,13 @@ class infoView:ObservableObject {
     
     func filterselected(option:SortOption) async throws{
         switch option{
-        case .name:
+        case .Name:
             self.exeName = try await FirebaseMenager.shared.getAllExeSortedByName(descending: false)
-        case .diff:
+        case .Diff:
             self.exeName = try await FirebaseMenager.shared.getAllExeSortedByDiff(descending: true)
-        case.grip:
+        case.Grip:
             self.exeName = try await FirebaseMenager.shared.getAllExeSortedByGrip(descending: true)
-        case .muscle:
+        case .Muscle:
             self.exeName = try await FirebaseMenager.shared.getAllExeSortedByMuscle(descending: true)
             
         }

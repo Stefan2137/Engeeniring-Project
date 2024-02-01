@@ -37,7 +37,7 @@ struct NewSetView: View {
                     .padding()
                 }
                 .formStyle(GroupedFormStyle())
-                .navigationTitle("New Set")
+                .navigationTitle("New Workout")
                 .toolbar{
                     ToolbarItem(placement: .topBarTrailing)
                     {

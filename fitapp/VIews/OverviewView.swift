@@ -36,7 +36,7 @@ struct OverviewView: View {
                                 .padding()
                                 .contentShape(Rectangle())
                                 .frame(width: 100 ,height: 30)
-                                .border(.black,width:1)
+                                
                             
                         }
                         .scaledToFit()
@@ -47,7 +47,7 @@ struct OverviewView: View {
                                 .frame(width: 70,height: 10)
                                 .padding()
                                 .contentShape(Rectangle())
-                                .border(.black,width:1)
+                                
                         }
                         
                     }

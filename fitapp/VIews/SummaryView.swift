@@ -24,7 +24,7 @@ struct SummaryView: View {
                         BarMark(x: .value("Time", dataPoint.formattedDay, unit: .day),
                                 y: .value("Weight", dataPoint.weig[index]))
                         .annotation {
-                            Text("\(viewModel.forTrailingZero(dataPoint.weig[index]))")
+                            Text("\(viewModel.forTrailingZero(dataPoint.weig[index])) KG")
                         }
                         .position(by:.value("weight", dataPoint.weig[index]))
                     }
