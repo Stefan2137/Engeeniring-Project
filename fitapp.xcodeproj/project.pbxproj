@@ -185,7 +185,7 @@
 			children = (
 				8CA001282B07E0E200DBB614 /* other */,
 				8CCE49802ADC811A00F51897 /* Services */,
-				8CCE497F2ADC80FE00F51897 /* VViewModels */,
+				8CCE497F2ADC80FE00F51897 /* ViewModels */,
 				8CCE497E2ADC80EA00F51897 /* Models */,
 				8CCE497C2ADC80C300F51897 /* VIews */,
 				8C1880112B643855007F2E4E /* FireStore */,
@@ -268,7 +268,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		8CCE497F2ADC80FE00F51897 /* VViewModels */ = {
+		8CCE497F2ADC80FE00F51897 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				8C52A9002ADF1EE0009271E0 /* WorkoutListViewViewModel.swift */,
@@ -284,7 +284,7 @@
 				8C4966F52B5EEA1A00B18AC9 /* ExerciseFieldViewModel.swift */,
 				8C18800F2B617B61007F2E4E /* SummarizingViewViewModel.swift */,
 			);
-			path = VViewModels;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		8CCE49802ADC811A00F51897 /* Services */ = {
