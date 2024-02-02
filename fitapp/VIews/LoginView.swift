@@ -34,8 +34,11 @@ struct LoginView: View {
                     TLButton(title: "Login in", background: .blue,titlebackground: .white)
                     {
                         viewModel.login()
+                        
                     }
+                    
                     .padding()
+                    .accessibility(identifier: "Login in")
                     
                 }
                 .offset(y: -50)

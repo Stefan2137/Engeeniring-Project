@@ -31,6 +31,7 @@ struct BmiCalculator: View {
 
             TLButton(title: "Calculate", background: .blue, titlebackground: .white) {
                 let bmi = calculateBMI()
+
             }
             .frame(width: 300, height: 40)
         }
