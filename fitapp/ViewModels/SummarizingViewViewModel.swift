@@ -12,8 +12,7 @@ import FirebaseAuth
 import Charts
 
 class infoView:ObservableObject {
-    
-    @Published private(set) var info:[SetInformation] = []
+    @Published private(set) var info:[SetInformation] = [] 
     @Published private(set) var exeName:[Exercise] = []
     var sortOption: SortOption? = nil
     var weights: [Double] = []
@@ -27,14 +26,37 @@ class infoView:ObservableObject {
     
     func getallsets() async throws
     {
-        self.info = try await  FirebaseMenager.shared.FetchData()
+        do {
+            let sets = try await FirebaseMenager.shared.FetchData()
+
+            DispatchQueue.main.async {
+                self.info = sets
+            }
+        } catch {
+            print("Error fetching exercise names: \(error)")
+        }
     }
     
     func getallname() async throws
     {
         self.exeName = try await FirebaseMenager.shared.getALLExeName()
+        let exeNameCount = self.exeName.count
+        print("Number of exercise Fetched: \(exeNameCount)")
     }
     
+    func count() async 
+    {
+        let db = Firestore.firestore()
+        let query = db.collection("cwiczenia")
+        let countQuery = query.count
+        do {
+            let snapshot = try await countQuery.getAggregation(source: .server)
+            print("Number of exercise in Database: \(snapshot.count)")
+            }catch
+        {
+                print(error)
+        }
+    }
     func filterselected(option:SortOption) async throws{
         switch option{
         case .Name:

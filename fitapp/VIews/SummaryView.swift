@@ -12,7 +12,7 @@ import Charts
 
 struct SummaryView: View {
     @ObservedObject private var viewModelE = ExerciseFieldViewModel()
-    @ObservedObject private var viewModel = infoView()
+    @StateObject private var viewModel = infoView()
     @State var selection = "Dumbbell Seated Scaption"
     
     var body: some View {

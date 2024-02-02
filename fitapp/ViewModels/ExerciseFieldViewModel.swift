@@ -9,37 +9,18 @@ import FirebaseFirestore
 import Foundation
 import FirebaseFirestoreSwift
 class ExerciseFieldViewModel: ObservableObject{
-    @Published var exercises = [Exe]()
-    private var dbe = Firestore.firestore()
+    @Published private(set) var exeName:[String] = []
+    @Published var selectedExercise: String = ""
     
-    init()
-    {
-        fetchExe()
-    }
-    
-    
-    func fetchExe()
-    {
-        dbe.collection("cwiczenia").addSnapshotListener { (querySnapshot, error )in
-            
-            guard let documents = querySnapshot?.documents else {
-                print("No documents")
-                return
+    func getallname() async throws {
+        do {
+            let names = try await FirebaseMenager.shared.getALLExeIDs()
+
+            DispatchQueue.main.async {
+                self.exeName = names
             }
-            DispatchQueue.main.async{
-                self.exercises = documents.compactMap { (queryDocumentSnapshot) -> Exe? in
-                    let data = queryDocumentSnapshot.data()
-                    
-                    guard   let Exercise_Name = data["Exercise_Name"] as? String, !Exercise_Name.isEmpty else {
-                        return nil
-                    }
-                    
-                    
-                    return Exe(Exercise_Name: Exercise_Name)
-                    
-                    
-                }
-            }
+        } catch {
+            print("Error fetching exercise names: \(error)")
         }
     }
 }

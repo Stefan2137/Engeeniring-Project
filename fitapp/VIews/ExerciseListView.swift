@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExerciseList: View {
-    @ObservedObject private var viewModel = infoView()
+    @StateObject private var viewModel = infoView()
 
     var body: some View {
         NavigationView {
@@ -43,6 +43,7 @@ struct ExerciseList: View {
             .navigationBarTitle("Exercises Library")
             .task{
                 try? await viewModel.getallname()
+                 await viewModel.count()
             }
         }
     }

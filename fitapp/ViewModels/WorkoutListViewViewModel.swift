@@ -10,7 +10,6 @@ import FirebaseFirestore
 
 class SetsViewViewModel: ObservableObject {
     @Published var showingNewSetItemView = false
-    @Published var EDate = Date()
     
     private let userId: String
     

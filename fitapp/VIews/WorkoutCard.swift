@@ -24,7 +24,6 @@ struct SetCard: View {
         HStack{
             VStack(alignment: .leading)
              {
-             
                  Text(item.WName)
                     .offset(x: -80 ,y:10)
                     .foregroundColor(colorScheme == .dark ? Color.black : Color.black)
@@ -36,8 +35,6 @@ struct SetCard: View {
                     .bold()
                     .frame(width: 300, height: 30)
                     .minimumScaleFactor(0.6)
-                    
-                    
             }
             
             
@@ -63,6 +60,6 @@ struct SetCard: View {
 
 struct SetCard_Previews: PreviewProvider {
     static var previews: some View {
-        SetCard( item: SetInformation(id: "xd", ExeName: [1:"gg"], setnumbers: [0 : 0], time: 311231, isDone: true, numberreps: [2 : [2]], weight: [2 : [55.5]], WName: "Elo"))
+        SetCard( item: SetInformation(id: "xd", ExeName: [1:"gg"], setnumbers: [0 : 0], time: 311231, isDone: true, numberreps: [2 : [2]], weight: [2 : [55.5]], WName: "Workout"))
     }
 }

@@ -44,7 +44,7 @@ class NewSetViewViewModel: ObservableObject {
                                     numberreps: numberofreps,
                                     weight:weightS,
                                     WName: WorkoutName
-                                    )
+        )
         
         let db = Firestore.firestore()
         db.collection("users")
@@ -68,4 +68,5 @@ class NewSetViewViewModel: ObservableObject {
         numberOfExercises += 1
     }
     
+
 }

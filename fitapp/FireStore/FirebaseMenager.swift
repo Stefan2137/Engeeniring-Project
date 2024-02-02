@@ -28,6 +28,12 @@ class FirebaseMenager {
         dbs.document(workoutId)
     }
     
+    func getALLExeIDs() async throws -> [String] {
+        let exercises = try await exeDB.getDocuments(as: Exercise.self)
+        let exerciseIDs = exercises.map { $0.id }
+        return exerciseIDs
+    }
+    
     func getALLExeName() async throws -> [Exercise]
     {
         try await exeDB.getDocuments(as: Exercise.self)
@@ -49,13 +55,6 @@ class FirebaseMenager {
         try await exeDB.order(by:"Difficulty_Level" , descending: descending).getDocuments(as: Exercise.self)
     }
     
-  //  func getallSetinfo(exercisename: String)async throws ->[SetInformation]{
-    //    try await dbs
-    //        .whereField(SetInformation.CodingKeys.ExeName.rawValue, isEqualTo: exercisename)
-            
-   // }
-   
-    
     func getSetInfo(workoutId: String) async throws -> SetInformation {
         try await workoutinfo(workoutId: workoutId).getDocument(as: SetInformation.self)
     }
@@ -64,10 +63,6 @@ class FirebaseMenager {
     {
         try await dbs.getDocuments(as: SetInformation.self)
     }
-    
-    
-    
- 
 }
 
 extension Query {

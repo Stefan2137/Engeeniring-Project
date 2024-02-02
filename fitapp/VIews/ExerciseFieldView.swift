@@ -9,22 +9,19 @@ import SwiftUI
 
 struct ExerciseField: View {
     @EnvironmentObject var viewModel: NewSetViewViewModel
-   // @ObservedObject private var viewModelE = ExerciseFieldViewModel()
-    @ObservedObject private var viewModelE = infoView()
+    @StateObject private var viewModelE = ExerciseFieldViewModel()
     let index: Int
-    @State private var field = "Choose your Exercise"
     @State private var numberofset = 1
     @State private var weight = [0.0]
     @State private var reps = [0]
     @State var show = true
-    
+   
     
     var body: some View {
-        if show{
             VStack {
-                Picker("", selection: $field) {
-                        ForEach(self.viewModelE.exeName, id: \.id) { exercise in
-                            Text(exercise.id).tag(exercise.id)
+                Picker("", selection: $viewModelE.selectedExercise) {
+                    ForEach(self.viewModelE.exeName, id: \.self) { exerciseID in
+                        Text(exerciseID).tag(exerciseID)
                         }
                     }
                     .pickerStyle(.menu)
@@ -45,16 +42,14 @@ struct ExerciseField: View {
                 
                 .frame(width: 350 ,height: 20)
                 .padding()
-                .scaledToFit()
             }
            
 
-            .onChange(of: field)
+            .onChange(of: viewModelE.selectedExercise)
             {
-                viewModel.title[index] = field
-                Task{
-                    try? await  self.viewModelE.getallname()
-                }
+
+                viewModel.title[index] = viewModelE.selectedExercise
+                
             }
             .onChange(of: weight)
             {
@@ -65,21 +60,13 @@ struct ExerciseField: View {
                 viewModel.numberofreps[index] = reps
             }
             .onAppear {
-                show = true
                 
+                Task{
+                    try? await  self.viewModelE.getallname()
+                }
             }
-            .onDisappear {
-                show = false
-            }
-            .task{
-               
-                  try? await  self.viewModelE.getallname()
-            }
-           
-            
         }
     }
-}
 struct ExerciseFieldPreview : PreviewProvider {
             static var previews: some View{
                 ExerciseField(index: 1)
