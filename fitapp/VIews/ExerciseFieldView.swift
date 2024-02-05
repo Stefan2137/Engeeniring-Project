@@ -30,6 +30,7 @@ struct ExerciseField: View {
                 
                 ForEach(0..<numberofset, id: \.self){
                     setIndex in ExerciseFieldRepsKG(index: setIndex, setnumber: numberofset, w: $weight, r: $reps)
+                        .buttonStyle(.plain)
                 }
                 
                 TLButton(title: "+Add Set", background: .gray, titlebackground: .black)

@@ -18,6 +18,8 @@ class infoView:ObservableObject {
     var weights: [Double] = []
     var names: String = ""
     var intervals: [TimeInterval] = []
+    var selection = "Dumbbell Seated Scaption"
+    var currentday = Date()
     @Published var chartData:[Summary] = []
     
     enum SortOption:String, CaseIterable{
@@ -40,11 +42,9 @@ class infoView:ObservableObject {
     func getallname() async throws
     {
         self.exeName = try await FirebaseMenager.shared.getALLExeName()
-        let exeNameCount = self.exeName.count
-        print("Number of exercise Fetched: \(exeNameCount)")
     }
     
-    func count() async 
+ /*   func count() async
     {
         let db = Firestore.firestore()
         let query = db.collection("cwiczenia")
@@ -57,6 +57,7 @@ class infoView:ObservableObject {
                 print(error)
         }
     }
+  */
     func filterselected(option:SortOption) async throws{
         switch option{
         case .Name:
@@ -76,9 +77,9 @@ class infoView:ObservableObject {
     var matchingKey: Int? = nil
     
     
-    func searchAndUpdate(searchString: String) {
+    func searchAndUpdate(searchString: String ,currentday: Date) {
            let sevenDaysInSeconds: TimeInterval = 7 * 24 * 60 * 60
-           let currentDate = Date()
+           let currentDate = currentday
            let sevenDaysAgo = currentDate.addingTimeInterval(-sevenDaysInSeconds)
            
         for (_, data) in info.enumerated() {

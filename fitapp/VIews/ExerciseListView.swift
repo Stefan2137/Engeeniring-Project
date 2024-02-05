@@ -14,7 +14,7 @@ struct ExerciseList: View {
         NavigationView {
             VStack {
                 List(viewModel.exeName , id: \.self) { exercise in
-                    NavigationLink(destination: ExerciseInfromationView(info: exercise.id, DiffLvL: exercise.Difficulty_Level, Exercise_Classification: exercise.Exercise_Classification ?? "No key", Grip: exercise.Grip, Muscle_Group: exercise.Muscle_Group ?? "No key", Posture: exercise.Posture ?? "No key", Primary_Equipment: exercise.Primary_Equipment, Prime_Mover_Muscle: exercise.Prime_Mover_Muscle, Secondary_Equipment: exercise.Secondary_Equipment ?? "NO key", Secondary_Muscle: exercise.Secondary_Muscle ?? "No key", Short_Youtube_Demonstration: exercise.Short_Youtube_Demonstration ?? "No key", Single_Or_Double_Arm: exercise.Single_Or_Double_Arm, Tertiary_Muscle: exercise.Tertiary_Muscle ?? "No key")) {
+                    NavigationLink(destination: ExerciseInfromationView(info: exercise.id, DiffLvL: exercise.Difficulty_Level, Exercise_Classification: exercise.Exercise_Classification ?? nil, Grip: exercise.Grip, Muscle_Group: exercise.Muscle_Group ?? nil, Posture: exercise.Posture ?? nil, Primary_Equipment: exercise.Primary_Equipment, Prime_Mover_Muscle: exercise.Prime_Mover_Muscle, Secondary_Equipment: exercise.Secondary_Equipment ?? nil, Secondary_Muscle: exercise.Secondary_Muscle ?? nil, Short_Youtube_Demonstration: exercise.Short_Youtube_Demonstration ?? "No key", Single_Or_Double_Arm: exercise.Single_Or_Double_Arm, Tertiary_Muscle: exercise.Tertiary_Muscle ?? nil)) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(exercise.id)
@@ -43,7 +43,6 @@ struct ExerciseList: View {
             .navigationBarTitle("Exercises Library")
             .task{
                 try? await viewModel.getallname()
-                 await viewModel.count()
             }
         }
     }

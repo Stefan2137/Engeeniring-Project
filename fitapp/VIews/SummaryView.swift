@@ -11,9 +11,11 @@ import Charts
 
 
 struct SummaryView: View {
-    @ObservedObject private var viewModelE = ExerciseFieldViewModel()
+    @StateObject private var viewModelE = ExerciseFieldViewModel()
     @StateObject private var viewModel = infoView()
     @State var selection = "Dumbbell Seated Scaption"
+    @State var currentday = Date()
+    
     
     var body: some View {
             VStack{
@@ -48,18 +50,25 @@ struct SummaryView: View {
                             }
                         }
                         .pickerStyle(.menu)
+                    DatePicker("pick a day", selection: $currentday,displayedComponents: .date
+                )
                 .padding()
                 .task {
                     try? await viewModel.getallsets()
                     try? await viewModel.getallname()
                     viewModel.chartData = []
-                    viewModel.searchAndUpdate(searchString: selection)
+                    viewModel.searchAndUpdate(searchString: selection, currentday: currentday)
                     }
                 .onChange(of: selection)
                     {
                     viewModel.chartData = []
-                    viewModel.searchAndUpdate(searchString: selection)
+                        viewModel.searchAndUpdate(searchString: selection, currentday: currentday)
                 }
+                .onChange(of: currentday)
+                        {
+                        viewModel.chartData = []
+                            viewModel.searchAndUpdate(searchString: selection, currentday: currentday)
+                    }
                 }
             }
         }

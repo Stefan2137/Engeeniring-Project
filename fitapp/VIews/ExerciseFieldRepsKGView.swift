@@ -25,9 +25,9 @@ struct ExerciseFieldRepsKG: View {
                 .offset(x: -15)
                 .scaledToFit()
                 VStack {
-                        Text("Kg/lbs")
+                        Text("KG")
                         .offset(y:6)
-                    TextField("Kg/lbs",value:$w[index] ,format: .number)
+                    TextField("Kg",value:$w[index] ,format: .number)
                         .keyboardType(.decimalPad)
                         .padding()
                         
